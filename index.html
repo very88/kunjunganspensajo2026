@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selamat Datang SMPN 1 Wongsorejo di SMAN 1 Wongsorejo (SMANJO)</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            smanjo: {
+              canvas: '#EAEFF8',
+              surface: '#F4F7FD',
+              card: 'rgba(255, 255, 255, 0.82)',
+              primary: '#0284C7',
+              accent: '#4F46E5',
+              gold: '#D97706',
+              emerald: '#059669',
+              slate: '#1E293B',
+              heading: '#0F172A'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    [x-cloak] { display: none !important; }
+
+    /* Ambient Animated Orbs */
+    @keyframes floatOrb1 {
+      0%, 100% { transform: translate(0px, 0px) scale(1); }
+      50% { transform: translate(80px, 40px) scale(1.15); }
+    }
+    @keyframes floatOrb2 {
+      0%, 100% { transform: translate(0px, 0px) scale(1.1); }
+      50% { transform: translate(-60px, 60px) scale(0.95); }
+    }
+    @keyframes floatOrb3 {
+      0%, 100% { transform: translate(0px, 0px) scale(1); }
+      50% { transform: translate(50px, -50px) scale(1.12); }
+    }
+
+    .ambient-orb-1 {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.28) 0%, rgba(99, 102, 241, 0.15) 50%, transparent 70%);
+      filter: blur(60px);
+      animation: floatOrb1 18s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .ambient-orb-2 {
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.22) 0%, rgba(236, 72, 153, 0.12) 50%, transparent 70%);
+      filter: blur(65px);
+      animation: floatOrb2 22s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .ambient-orb-3 {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, rgba(14, 165, 233, 0.15) 50%, transparent 70%);
+      filter: blur(55px);
+      animation: floatOrb3 20s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ambient Glass Navbar */
+    .glass-nav-ambient {
+      background: rgba(234, 239, 248, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+    }
+
+    /* Ambient Glassmorphism Card */
+    .ambient-card {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 10px 30px -5px rgba(30, 41, 59, 0.06), 0 4px 6px -2px rgba(30, 41, 59, 0.03);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ambient-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.94);
+      border-color: rgba(56, 189, 248, 0.6);
+      box-shadow: 0 22px 40px -10px rgba(14, 165, 233, 0.18), 0 8px 16px -4px rgba(79, 70, 229, 0.08);
+    }
+
+    /* Hero & Closing Background Overlay */
+    .hero-clear-overlay {
+      background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.68) 0%,
+        rgba(15, 23, 42, 0.38) 45%,
+        rgba(14, 116, 144, 0.45) 100%
+      );
+    }
+    .closing-clear-overlay {
+      background: linear-gradient(
+        180deg,
+        rgba(15, 23, 42, 0.78) 0%,
+        rgba(15, 23, 42, 0.68) 50%,
+        rgba(11, 17, 32, 0.88) 100%
+      );
+    }
+
+    /* Slide Transition Optical Veil */
+    .slide-veil {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(234, 239, 248, 0.94), rgba(224, 231, 255, 0.94));
+      backdrop-filter: blur(8px);
+      z-index: 60;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .slide-veil.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Smooth Tab Content Transition */
+    .tab-pane {
+      transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Line Chart Animations */
+    @keyframes drawChartPath {
+      0% { stroke-dashoffset: 700; opacity: 0.2; }
+      15% { opacity: 1; }
+      80%, 100% { stroke-dashoffset: 0; opacity: 1; }
+    }
+    @keyframes fadeChartArea {
+      0%, 15% { opacity: 0; transform: scaleY(0.6); transform-origin: bottom; }
+      80%, 100% { opacity: 1; transform: scaleY(1); transform-origin: bottom; }
+    }
+    @keyframes popNode1 {
+      0%, 12% { opacity: 0; transform: scale(0.3); }
+      25%, 100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes popNode2 {
+      0%, 45% { opacity: 0; transform: scale(0.3); }
+      60%, 100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes popNode3 {
+      0%, 75% { opacity: 0; transform: scale(0.3); }
+      88%, 100% { opacity: 1; transform: scale(1); }
+    }
+
+    .anim-chart-line {
+      stroke-dasharray: 700;
+      stroke-dashoffset: 700;
+      animation: drawChartPath 4.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    .anim-chart-area {
+      animation: fadeChartArea 4.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    .anim-node-1 { transform-origin: 60px 145px; animation: popNode1 4.8s ease-out infinite; }
+    .anim-node-2 { transform-origin: 290px 48px; animation: popNode2 4.8s ease-out infinite; }
+    .anim-node-3 { transform-origin: 520px 22px; animation: popNode3 4.8s ease-out infinite; }
+
+    /* ==================== CINEMATIC ROLLING CREDITS DENGAN BANNER AKHIR ==================== */
+    .credits-container {
+      height: 380px;
+      overflow: hidden;
+      position: relative;
+      mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+    }
+
+    /* Animasi gulir bergerak ke atas lalu berhenti tepat di banner akhir */
+    @keyframes rollAndFinishCredits {
+      0% {
+        transform: translateY(380px);
+      }
+      78% {
+        transform: translateY(-840px);
+      }
+      84%, 100% {
+        transform: translateY(-900px);
+      }
+    }
+
+    .credits-content {
+      animation: rollAndFinishCredits 36s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+    }
+    .credits-content:hover {
+      animation-play-state: paused;
+    }
+
+    /* Shimmering Gradient Light Effect untuk Banner Akhir */
+    @keyframes shimmerLight {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    .text-gradient-shimmer {
+      background: linear-gradient(
+        90deg,
+        #38bdf8 0%,
+        #fbbf24 25%,
+        #f43f5e 50%,
+        #34d399 75%,
+        #38bdf8 100%
+      );
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shimmerLight 4s linear infinite;
+    }
+
+    .box-glow-ambient {
+      box-shadow: 0 0 50px -10px rgba(14, 165, 233, 0.35), 0 0 30px -5px rgba(245, 158, 11, 0.25);
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-[#E8EEF8] via-[#EDF2FA] to-[#E2EAF6] text-slate-800 font-sans antialiased selection:bg-sky-500 selection:text-white overflow-x-hidden min-h-screen relative"
+      x-data="smanjoApp()"
+      @keydown.window.arrow-right="if(presentationMode) nextSlide()"
+      @keydown.window.arrow-left="if(presentationMode) prevSlide()"
+      @keydown.window.escape="closeAllModals()">
+
+  <!-- Ambient Glow Mesh Layer -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div class="ambient-orb-1 top-10 left-10"></div>
+    <div class="ambient-orb-2 top-1/3 right-5"></div>
+    <div class="ambient-orb-3 bottom-20 left-1/4"></div>
+  </div>
+
+  <!-- Minimalist Slide Veil -->
+  <div class="slide-veil" :class="{ 'active': isTransitioning }"></div>
+
+  <!-- ==================== TOP NAVIGATION BAR ==================== -->
+  <header class="fixed top-0 left-0 right-0 z-40 glass-nav-ambient">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4 relative z-10">
+      
+      <!-- Logo & Judul Header -->
+      <a href="#slide-hero" @click.prevent="goToSlide(0)" class="flex items-center gap-3.5 group shrink-0">
+        <div class="w-12 h-12 rounded-2xl bg-white border border-sky-200 overflow-hidden flex items-center justify-center shadow-md shadow-sky-500/10 group-hover:scale-105 transition shrink-0 p-1">
+          <img src="logosmanjo.jpg"
+               alt="Logo SMAN 1 Wongsorejo"
+               @load="window.markImageStatus('logosmanjo.jpg', true)"
+               @error="tryAlternativeFormats($el, 'logosmanjo.jpg')"
+               class="w-full h-full object-contain">
+        </div>
+        <div class="leading-tight">
+          <div class="flex items-center gap-2">
+            <span class="font-extrabold text-base sm:text-lg tracking-tight text-slate-900 group-hover:text-sky-600 transition">SMAN 1 WONGSOREJO</span>
+            <span class="text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-500/15 to-orange-500/15 text-amber-700 border border-amber-300/60 shadow-xs">SMANJO</span>
+          </div>
+          <p class="text-xs text-slate-500 font-semibold mt-0.5">Menyambut Kunjungan Siswa Kelas 9 SMPN 1 Wongsorejo</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-1.5 bg-white/70 p-1.5 rounded-2xl border border-white/80 shadow-xs backdrop-blur-md">
+        <template x-for="(sec, idx) in sections" :key="sec.id">
+          <button @click="goToSlide(idx)"
+                  :class="currentSlide === idx ? 'bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold shadow-md shadow-sky-500/25' : 'text-slate-600 hover:text-slate-900 hover:bg-white/80 font-semibold'"
+                  class="px-3.5 py-2 rounded-xl text-xs transition flex items-center gap-1.5">
+            <i :class="sec.icon"></i>
+            <span x-text="sec.label"></span>
+          </button>
+        </template>
+      </nav>
+
+      <!-- Action Button: Mode Presentasi -->
+      <div class="flex items-center gap-2.5">
+        <button @click="togglePresentationMode()"
+                :class="presentationMode ? 'bg-amber-500 text-slate-950 font-bold shadow-amber-500/30' : 'bg-gradient-to-r from-sky-600 via-indigo-600 to-blue-600 text-white font-bold shadow-sky-600/25'"
+                class="px-4 py-2.5 rounded-xl text-xs flex items-center gap-2 shadow-lg hover:opacity-95 transition transform hover:-translate-y-0.5">
+          <i :class="presentationMode ? 'fa-solid fa-compress' : 'fa-solid fa-tv'"></i>
+          <span class="hidden md:inline" x-text="presentationMode ? 'Keluar Mode Proyektor' : 'Mode Presentasi'"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="pt-20 relative z-10">
+
+    <!-- 1. HERO / WELCOME SECTION -->
+    <section id="slide-hero" class="relative min-h-[calc(100vh-5rem)] flex items-center py-12 lg:py-20 px-4 sm:px-6 lg:px-8 border-b border-white/60 overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img src="sman1wongsorejo.jpg"
+             alt="Background Gedung SMAN 1 Wongsorejo"
+             @load="window.markImageStatus('sman1wongsorejo.jpg', true)"
+             @error="tryAlternativeFormats($el, 'sman1wongsorejo.jpg')"
+             class="w-full h-full object-cover scale-100 brightness-[0.98] contrast-[1.08] transition duration-700">
+        <div class="absolute inset-0 hero-clear-overlay"></div>
+      </div>
+
+      <div class="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/90 border border-white/90 text-sky-700 text-xs sm:text-sm font-bold shadow-lg shadow-black/10 backdrop-blur-md">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+            <span>KUNJUNGAN STUDI & PENGENALAN KAMPUS SMANJO</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.14] text-white drop-shadow-md">
+            Selamat Datang Adik-Adik Kelas 9
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-sky-300 to-emerald-300">
+              SMPN 1 Wongsorejo
+            </span>
+            di SMAN 1 Wongsorejo!
+          </h1>
+
+          <p class="text-base sm:text-xl text-slate-100 leading-relaxed max-w-2xl font-medium drop-shadow">
+            "Kenali Lebih Dekat Kampus SMANJO: Tempat Tumbuhnya Karakter, Karya, dan Prestasi"
+          </p>
+
+          <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-2 max-w-xl">
+            <div class="bg-white/85 backdrop-blur-md p-3.5 rounded-2xl text-center border border-white/80 shadow-lg">
+              <p class="text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">28 Siswa</p>
+              <p class="text-xs text-slate-700 font-semibold mt-0.5">Lolos PTN 2026 (+180%)</p>
+            </div>
+            <div class="bg-white/85 backdrop-blur-md p-3.5 rounded-2xl text-center border border-white/80 shadow-lg">
+              <p class="text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-amber-600 to-orange-500 bg-clip-text text-transparent">11</p>
+              <p class="text-xs text-slate-700 font-semibold mt-0.5">Ekstrakurikuler Aktif</p>
+            </div>
+            <div class="bg-white/85 backdrop-blur-md p-3.5 rounded-2xl text-center border border-white/80 shadow-lg">
+              <p class="text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Double Track</p>
+              <p class="text-xs text-slate-700 font-semibold mt-0.5">Siap Kuliah & Kerja</p>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3.5 pt-3">
+            <button @click="goToSlide(1)"
+                    class="px-7 py-4 rounded-2xl bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-extrabold text-sm sm:text-base shadow-xl shadow-sky-900/30 flex items-center gap-3 transition transform hover:-translate-y-0.5">
+              <span>Mulai Jelajahi Kurikulum SMANJO</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Info Card Kepala Sekolah -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="ambient-card p-6 rounded-3xl flex flex-col sm:flex-row items-center gap-5 cursor-pointer group border-2 border-amber-300/80 hover:border-amber-400 max-w-md w-full shadow-2xl"
+               @click="openModal({
+                 title: 'Dr. Akhlakul Karimah, S.E., M.M.',
+                 category: 'Kepala SMAN 1 Wongsorejo',
+                 src: 'kepalasekolah.jpg',
+                 desc: 'Selamat datang di SMAN 1 Wongsorejo! Kami menyambut hangat kunjungan adik-adik SMPN 1 Wongsorejo. Semoga kegiatan ini menjadi inspirasi terbaik bagi kalian untuk melanjutkan pendidikan di SMANJO.',
+                 highlights: ['Kepala SMAN 1 Wongsorejo', 'Visi Pendidikan Karakter & Digital', 'Pemimpin Inovasi Sekolah']
+               })">
+            <div class="relative w-36 h-44 sm:w-32 sm:h-40 rounded-2xl overflow-hidden bg-slate-900 shrink-0 border-2 border-amber-400 shadow-lg flex items-center justify-center">
+              <img src="kepalasekolah.jpg"
+                   alt="Dr. Akhlakul Karimah, S.E., M.M."
+                   @load="window.markImageStatus('kepalasekolah.jpg', true)"
+                   @error="tryAlternativeFormats($el, 'kepalasekolah.jpg')"
+                   class="w-full h-full object-contain group-hover:scale-105 transition duration-500 p-1">
+            </div>
+            <div class="space-y-2 text-center sm:text-left min-w-0">
+              <span class="px-3 py-1 rounded-full bg-gradient-to-r from-amber-500/15 to-orange-500/15 text-amber-800 text-[11px] font-extrabold uppercase tracking-wider border border-amber-300/60">Kepala Sekolah</span>
+              <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 group-hover:text-amber-600 transition leading-snug">Dr. Akhlakul Karimah, S.E., M.M.</h3>
+              <p class="text-xs text-slate-600 italic">"Rumah inspirasi untuk meraih impian dan prestasi gemilang."</p>
+              <p class="text-xs font-bold text-sky-600 flex items-center justify-center sm:justify-start gap-1.5 pt-1">
+                <span>Klik Profil Lengkap</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 2. KURIKULUM MERDEKA ==================== -->
+    <section id="slide-kurikulum" class="py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-white/60 relative">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div>
+            <div class="inline-flex items-center gap-2 text-indigo-600 font-extrabold text-xs uppercase tracking-widest mb-2">
+              <i class="fa-solid fa-graduation-cap"></i>
+              <span>BAGIAN 01 • STRUKTUR AKADEMIK & KURIKULUM</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Kurikulum Merdeka SMAN 1 Wongsorejo</h2>
+            <p class="text-slate-600 mt-2 max-w-3xl text-sm sm:text-base font-medium">Pembelajaran terintegrasi melalui 3 pilar utama: <strong>Intrakurikuler</strong> (pilihan minat bakat), <strong>Kokurikuler P5</strong>, dan <strong>Ekstrakurikuler</strong> pembentuk karakter juara.</p>
+          </div>
+
+          <!-- Switcher Tab Kurikulum -->
+          <div class="flex flex-wrap gap-1.5 bg-white/80 p-1.5 rounded-2xl border border-white shadow-md self-start backdrop-blur-md">
+            <button @click="kurikulumTab = 'pilar'"
+                    :class="kurikulumTab === 'pilar' ? 'bg-gradient-to-r from-indigo-500 to-sky-600 text-white font-bold shadow-md shadow-indigo-500/25' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-semibold'"
+                    class="px-4 py-2 rounded-xl text-xs sm:text-sm transition">
+              3 Pilar Kurikulum
+            </button>
+            <button @click="kurikulumTab = 'kelas10'"
+                    :class="kurikulumTab === 'kelas10' ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white font-bold shadow-md shadow-sky-500/25' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-semibold'"
+                    class="px-4 py-2 rounded-xl text-xs sm:text-sm transition">
+              Mapel Kelas X (Fase E)
+            </button>
+            <button @click="kurikulumTab = 'kelas11-12'"
+                    :class="kurikulumTab === 'kelas11-12' ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold shadow-md shadow-amber-500/25' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-semibold'"
+                    class="px-4 py-2 rounded-xl text-xs sm:text-sm transition">
+              Mapel Pilihan XI & XII (Fase F)
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB 1: 3 PILAR KURIKULUM MERDEKA -->
+        <div x-show="kurikulumTab === 'pilar'"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 translate-y-3"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             class="grid grid-cols-1 md:grid-cols-3 gap-6 tab-pane">
+          
+          <div class="ambient-card p-6 sm:p-7 rounded-3xl space-y-4 border-t-4 border-t-sky-500 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="w-12 h-12 rounded-2xl bg-sky-500/15 text-sky-600 flex items-center justify-center text-xl font-bold">
+                <i class="fa-solid fa-book-open-reader"></i>
+              </div>
+              <span class="inline-block px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-sky-100 text-sky-800">Pilar 01</span>
+              <h3 class="text-xl font-extrabold text-slate-900">Intrakurikuler</h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">Pembelajaran mendalam yang berfokus pada materi esensial dan pengembangan kompetensi peserta didik sesuai fase perkembangannya.</p>
+            </div>
+            <ul class="space-y-2 text-xs font-semibold text-slate-700 bg-sky-50/60 p-3.5 rounded-2xl border border-sky-100">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-sky-500"></i><span>Fase E: Eksplorasi Minat Terpadu</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-sky-500"></i><span>Fase F: Pemilihan Mapel Sesuai Cita-cita PTN</span></li>
+            </ul>
+          </div>
+
+          <div class="ambient-card p-6 sm:p-7 rounded-3xl space-y-4 border-t-4 border-t-amber-500 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="w-12 h-12 rounded-2xl bg-amber-500/15 text-amber-600 flex items-center justify-center text-xl font-bold">
+                <i class="fa-solid fa-hands-holding-circle"></i>
+              </div>
+              <span class="inline-block px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-amber-100 text-amber-800">Pilar 02</span>
+              <h3 class="text-xl font-extrabold text-slate-900">Kokurikuler (P5)</h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">Projek Penguatan Profil Pelajar Pancasila untuk menumbuhkan karakter beriman, berkebhinekaan global, mandiri, gotong royong, bernalar kritis, dan kreatif.</p>
+            </div>
+            <ul class="space-y-2 text-xs font-semibold text-slate-700 bg-amber-50/60 p-3.5 rounded-2xl border border-amber-100">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-amber-500"></i><span>Gaya Hidup Berkelanjutan & Ketahanan Pangan</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-amber-500"></i><span>Kearifan Lokal & Kewirausahaan Mandiri</span></li>
+            </ul>
+          </div>
+
+          <div class="ambient-card p-6 sm:p-7 rounded-3xl space-y-4 border-t-4 border-t-emerald-500 flex flex-col justify-between">
+            <div class="space-y-3">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 text-emerald-600 flex items-center justify-center text-xl font-bold">
+                <i class="fa-solid fa-medal"></i>
+              </div>
+              <span class="inline-block px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-emerald-100 text-emerald-800">Pilar 03</span>
+              <h3 class="text-xl font-extrabold text-slate-900">Ekstrakurikuler</h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">11 wadah minat, bakat, olahraga, seni budaya, kepemimpinan, dan riset teknologi yang mencetak juara tingkat kabupaten hingga internasional.</p>
+            </div>
+            <ul class="space-y-2 text-xs font-semibold text-slate-700 bg-emerald-50/60 p-3.5 rounded-2xl border border-emerald-100">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-emerald-500"></i><span>11 Wadah Ekskul Aktif & Berprestasi</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-emerald-500"></i><span>Didampingi Pembina & Pelatih Berpengalaman</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- TAB 2: MAPEL KELAS X -->
+        <div x-show="kurikulumTab === 'kelas10'"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 translate-y-3"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             class="space-y-6 tab-pane">
+          <div class="ambient-card rounded-3xl p-6 sm:p-8 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
+              <div>
+                <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-sky-100 text-sky-800 border border-sky-300">FASE E • TAHUN PERTAMA SMA</span>
+                <h3 class="text-2xl font-extrabold text-slate-900 mt-2">Daftar Mata Pelajaran Kelas X</h3>
+                <p class="text-xs sm:text-sm text-slate-500 font-medium">Siswa kelas X mempelajari mata pelajaran fondasi secara menyeluruh sebelum menentukan mapel pilihan di kelas XI.</p>
+              </div>
+              <span class="text-xs font-bold text-sky-700 bg-white px-3.5 py-2 rounded-xl border border-sky-200 shadow-xs self-start">
+                <i class="fa-solid fa-layer-group mr-1.5"></i> 10 Kelompok Mapel Wajib
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+              <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition">
+                <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-700 font-extrabold text-xs flex items-center justify-center shrink-0">1</span>
+                <div><p class="text-sm font-bold text-slate-900">Pendidikan Agama & Budi Pekerti</p><p class="text-[11px] text-slate-500 font-medium">Penguatan karakter spiritual</p></div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition">
+                <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-700 font-extrabold text-xs flex items-center justify-center shrink-0">2</span>
+                <div><p class="text-sm font-bold text-slate-900">Pendidikan Pancasila</p><p class="text-[11px] text-slate-500 font-medium">Kewarganegaraan & Kebangsaan</p></div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition">
+                <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-700 font-extrabold text-xs flex items-center justify-center shrink-0">3</span>
+                <div><p class="text-sm font-bold text-slate-900">Bahasa Indonesia</p><p class="text-[11px] text-slate-500 font-medium">Literasi & Komunikasi Efektif</p></div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition">
+                <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-700 font-extrabold text-xs flex items-center justify-center shrink-0">4</span>
+                <div><p class="text-sm font-bold text-slate-900">Matematika</p><p class="text-[11px] text-slate-500 font-medium">Numerasi & Berpikir Kritis</p></div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition">
+                <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-700 font-extrabold text-xs flex items-center justify-center shrink-0">5</span>
+                <div><p class="text-sm font-bold text-slate-900">Bahasa Inggris</p><p class="text-[11px] text-slate-500 font-medium">Komunikasi Global Modern</p></div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition">
+                <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-700 font-extrabold text-xs flex items-center justify-center shrink-0">6</span>
+                <div><p class="text-sm font-bold text-slate-900">PJOK</p><p class="text-[11px] text-slate-500 font-medium">Jasmani, Olahraga & Kesehatan</p></div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition">
+                <span class="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-700 font-extrabold text-xs flex items-center justify-center shrink-0">7</span>
+                <div><p class="text-sm font-bold text-slate-900">IPA Terpadu</p><p class="text-[11px] text-indigo-600 font-bold">Fisika, Kimia, & Biologi</p></div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition">
+                <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-700 font-extrabold text-xs flex items-center justify-center shrink-0">8</span>
+                <div><p class="text-sm font-bold text-slate-900">IPS Terpadu</p><p class="text-[11px] text-amber-600 font-bold">Sejarah, Ekonomi, Sosiologi, Geografi</p></div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition">
+                <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-700 font-extrabold text-xs flex items-center justify-center shrink-0">9</span>
+                <div><p class="text-sm font-bold text-slate-900">Informatika</p><p class="text-[11px] text-slate-500 font-medium">Komputasional & Digital Skilling</p></div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition sm:col-span-2 lg:col-span-1">
+                <span class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 font-extrabold text-xs flex items-center justify-center shrink-0">10</span>
+                <div><p class="text-sm font-bold text-slate-900">PKWU & Mulok Kerajinan</p><p class="text-[11px] text-emerald-600 font-bold">Kewirausahaan & Seni Kerajinan Khas</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: MAPEL PILIHAN XI & XII -->
+        <div x-show="kurikulumTab === 'kelas11-12'"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 translate-y-3"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             class="space-y-6 tab-pane">
+          
+          <div class="p-4 rounded-2xl bg-indigo-50 border border-indigo-200 text-indigo-900 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+              <i class="fa-solid fa-circle-info text-indigo-600 text-lg"></i>
+              <p class="text-xs sm:text-sm font-semibold">Struktur Kelas XI & XII: <strong>9 Mata Pelajaran Umum</strong> + <strong>5 Mata Pelajaran Pilihan</strong> sesuai rumpun karir & peminatan PTN.</p>
+            </div>
+            <span class="text-xs font-extrabold px-3 py-1 rounded-full bg-indigo-600 text-white self-start shrink-0">Fase F Merdeka</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Rumpun 1 -->
+            <div class="ambient-card p-6 sm:p-7 rounded-3xl space-y-5 border-2 border-sky-300">
+              <div class="flex items-center justify-between">
+                <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-sky-100 text-sky-800 border border-sky-300">Kombinasi Pilihan Rumpun 1 (XI.2,2)</span>
+                <span class="w-8 h-8 rounded-xl bg-sky-500/15 text-sky-600 flex items-center justify-center text-sm font-bold"><i class="fa-solid fa-atom"></i></span>
+              </div>
+              <h3 class="text-xl font-extrabold text-slate-900">Rumpun MIPA & Rekayasa</h3>
+              <p class="text-xs text-slate-600 leading-relaxed font-medium">Cocok untuk adik-adik yang ingin kuliah ke jurusan Kedokteran, Teknik, Farmasi, MIPA, Ilmu Komputer, atau Agroteknologi.</p>
+              
+              <div class="space-y-2 pt-2">
+                <p class="text-xs font-extrabold text-slate-700 uppercase tracking-wider">5 Mapel Pilihan Terpilih:</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1.5 rounded-xl bg-white border border-sky-200 text-sky-800 text-xs font-bold shadow-xs">1. PKWU</span>
+                  <span class="px-3 py-1.5 rounded-xl bg-white border border-sky-200 text-sky-800 text-xs font-bold shadow-xs">2. Matematika Tingkat Lanjut (MTK TL)</span>
+                  <span class="px-3 py-1.5 rounded-xl bg-white border border-sky-200 text-sky-800 text-xs font-bold shadow-xs">3. Fisika (FIS)</span>
+                  <span class="px-3 py-1.5 rounded-xl bg-white border border-sky-200 text-sky-800 text-xs font-bold shadow-xs">4. Kimia (KIM)</span>
+                  <span class="px-3 py-1.5 rounded-xl bg-white border border-sky-200 text-sky-800 text-xs font-bold shadow-xs">5. Biologi (BIO)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Rumpun 2 -->
+            <div class="ambient-card p-6 sm:p-7 rounded-3xl space-y-5 border-2 border-amber-300">
+              <div class="flex items-center justify-between">
+                <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-amber-100 text-amber-800 border border-amber-300">Kombinasi Pilihan Rumpun 2 (XI.2,3)</span>
+                <span class="w-8 h-8 rounded-xl bg-amber-500/15 text-amber-600 flex items-center justify-center text-sm font-bold"><i class="fa-solid fa-landmark"></i></span>
+              </div>
+              <h3 class="text-xl font-extrabold text-slate-900">Rumpun Sosial & Humaniora</h3>
+              <p class="text-xs text-slate-600 leading-relaxed font-medium">Cocok untuk adik-adik yang ingin kuliah ke jurusan Hukum, Manajemen Bisnis, Akuntansi, Ilmu Komunikasi, Hubungan Internasional, atau Psikologi.</p>
+              
+              <div class="space-y-2 pt-2">
+                <p class="text-xs font-extrabold text-slate-700 uppercase tracking-wider">5 Mapel Pilihan Terpilih:</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1.5 rounded-xl bg-white border border-amber-200 text-amber-800 text-xs font-bold shadow-xs">1. PKWU</span>
+                  <span class="px-3 py-1.5 rounded-xl bg-white border border-amber-200 text-amber-800 text-xs font-bold shadow-xs">2. Sejarah Tingkat Lanjut (SEJ TL)</span>
+                  <span class="px-3 py-1.5 rounded-xl bg-white border border-amber-200 text-amber-800 text-xs font-bold shadow-xs">3. Ekonomi (EKO)</span>
+                  <span class="px-3 py-1.5 rounded-xl bg-white border border-amber-200 text-amber-800 text-xs font-bold shadow-xs">4. Geografi (GEO)</span>
+                  <span class="px-3 py-1.5 rounded-xl bg-white border border-amber-200 text-amber-800 text-xs font-bold shadow-xs">5. Sosiologi (SOS)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 3. PROGRAM UNGGULAN & PEMBIASAAN SEKOLAH ==================== -->
+    <section id="slide-program" class="py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-white/60 relative">
+      <div class="max-w-7xl mx-auto space-y-12">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div>
+            <div class="inline-flex items-center gap-2 text-sky-600 font-extrabold text-xs uppercase tracking-widest mb-2">
+              <i class="fa-solid fa-stars"></i>
+              <span>BAGIAN 02 • BUDAYA, DISIPLIN & INOVASI SEKOLAH</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Program & Budaya Positif SMANJO</h2>
+            <p class="text-slate-600 mt-2 max-w-2xl text-sm sm:text-base font-medium">Pembiasaan karakter melalui PPK, Budaya 5S, Berselang, Pembatasan Gadget, Jum'at Bergizi, Ketahanan Pangan (SIKAP), hingga SMA Double Track.</p>
+          </div>
+          
+          <!-- Animated Tab Switcher Program -->
+          <div class="flex flex-wrap gap-1.5 bg-white/80 p-1.5 rounded-2xl border border-white shadow-md self-start backdrop-blur-md">
+            <button @click="switchProgramTab('all')"
+                    :class="programTab === 'all' ? 'bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold shadow-md shadow-sky-500/25' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-semibold'"
+                    class="px-4 py-2 rounded-xl text-xs sm:text-sm transition">
+              Semua Program (13)
+            </button>
+            <button @click="switchProgramTab('budaya-disiplin')"
+                    :class="programTab === 'budaya-disiplin' ? 'bg-gradient-to-r from-indigo-500 to-blue-600 text-white font-bold shadow-md shadow-indigo-500/25' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-semibold'"
+                    class="px-4 py-2 rounded-xl text-xs sm:text-sm transition">
+              Budaya 5S, Berselang & Gadget (3)
+            </button>
+            <button @click="switchProgramTab('ppk-harian')"
+                    :class="programTab === 'ppk-harian' ? 'bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold shadow-md shadow-sky-500/25' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-semibold'"
+                    class="px-4 py-2 rounded-xl text-xs sm:text-sm transition">
+              PPK Pagi Harian (3)
+            </button>
+            <button @click="switchProgramTab('ppk-jumat')"
+                    :class="programTab === 'ppk-jumat' ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold shadow-md shadow-amber-500/25' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-semibold'"
+                    class="px-4 py-2 rounded-xl text-xs sm:text-sm transition">
+              Jum'at Berkah & Sehat (4)
+            </button>
+            <button @click="switchProgramTab('inovasi')"
+                    :class="programTab === 'inovasi' ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold shadow-md shadow-emerald-500/25' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-semibold'"
+                    class="px-4 py-2 rounded-xl text-xs sm:text-sm transition">
+              Inovasi, SIKAP, ASRI & DT (3)
+            </button>
+          </div>
+        </div>
+
+        <!-- 1. SUB-SECTION: BUDAYA POSITIF & DISIPLIN (DENGAN FOTO) -->
+        <div x-show="programTab === 'all' || programTab === 'budaya-disiplin'"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 translate-y-3"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             class="space-y-6 tab-pane">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center font-bold shadow-md shadow-indigo-500/20">
+                <i class="fa-solid fa-hand-holding-heart"></i>
+              </span>
+              <div>
+                <h3 class="text-xl font-bold text-slate-900">Karakter & Disiplin Belajar Positif</h3>
+                <p class="text-xs text-slate-500 font-medium">Pembiasaan tata krama 5S, peduli kelas Berselang, dan fokus belajar tanpa distraksi gadget</p>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-indigo-700 bg-indigo-50 px-3 py-1.5 rounded-lg border border-indigo-200">Klik kartu untuk foto penuh</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <template x-for="item in budayaPrograms" :key="item.title">
+              <div @click="openModal(item)" class="ambient-card rounded-3xl overflow-hidden flex flex-col cursor-pointer group">
+                <div class="relative h-52 w-full bg-slate-900 overflow-hidden flex items-center justify-center">
+                  <img :src="item.src" :alt="item.title"
+                       @load="window.markImageStatus(item.src, true)"
+                       @error="tryAlternativeFormats($el, item.src, item.title)"
+                       class="w-full h-full object-contain group-hover:scale-105 transition duration-500 p-2">
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                  <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-md"
+                        x-text="item.badge"></span>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                  <div>
+                    <div class="flex items-center gap-2 text-indigo-600 text-xs font-extrabold mb-1">
+                      <i :class="item.icon"></i>
+                      <span x-text="item.category"></span>
+                    </div>
+                    <h4 class="text-lg font-extrabold text-slate-900 group-hover:text-indigo-600 transition" x-text="item.title"></h4>
+                    <p class="text-sm text-slate-600 mt-1.5 leading-relaxed font-medium" x-text="item.desc"></p>
+                  </div>
+                  <div class="space-y-2.5">
+                    <div class="flex flex-wrap gap-1.5">
+                      <template x-for="hl in item.highlights" :key="hl">
+                        <span class="text-[11px] font-semibold px-2 py-0.5 rounded-lg bg-slate-100 text-slate-700 border border-slate-200" x-text="hl"></span>
+                      </template>
+                    </div>
+                    <div class="pt-2 border-t border-slate-200/80 flex items-center justify-between text-xs font-bold text-indigo-600">
+                      <span>Lihat Dokumentasi</span>
+                      <i class="fa-solid fa-expand"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <!-- 2. PPK Grid (Pagi Harian & Spesial Jum'at) -->
+        <div x-show="programTab === 'all' || programTab === 'ppk-harian' || programTab === 'ppk-jumat'"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 translate-y-3"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             class="space-y-6 tab-pane">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-400 to-blue-600 text-white flex items-center justify-center font-bold shadow-md shadow-sky-500/20">
+                <i class="fa-solid fa-heart-pulse"></i>
+              </span>
+              <div>
+                <h3 class="text-xl font-bold text-slate-900">Program PPK & Spesial Hari Jum'at</h3>
+                <p class="text-xs text-slate-500 font-medium">Asmaul Husna, Doa, Indonesia Raya, Jum'at Taqwa, Sehat, Bergizi, & Bersih</p>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-sky-700 bg-sky-100 px-3 py-1.5 rounded-lg border border-sky-200">Klik kartu untuk foto penuh</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <template x-for="item in filteredPPK" :key="item.title">
+              <div @click="openModal(item)" class="ambient-card rounded-3xl overflow-hidden flex flex-col cursor-pointer group">
+                <div class="relative h-52 w-full bg-slate-900 overflow-hidden flex items-center justify-center">
+                  <img :src="item.src" :alt="item.title"
+                       @load="window.markImageStatus(item.src, true)"
+                       @error="tryAlternativeFormats($el, item.src, item.title)"
+                       class="w-full h-full object-contain group-hover:scale-105 transition duration-500 p-2">
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                  <span :class="item.group === 'ppk-harian' ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white' : 'bg-gradient-to-r from-amber-500 to-orange-500 text-white'"
+                        class="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider shadow-md"
+                        x-text="item.badge"></span>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                  <div>
+                    <div class="flex items-center gap-2 text-sky-600 text-xs font-extrabold mb-1">
+                      <i :class="item.icon"></i>
+                      <span x-text="item.category"></span>
+                    </div>
+                    <h4 class="text-lg font-extrabold text-slate-900 group-hover:text-sky-600 transition" x-text="item.title"></h4>
+                    <p class="text-sm text-slate-600 mt-1.5 leading-relaxed font-medium" x-text="item.desc"></p>
+                  </div>
+                  <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs font-bold text-sky-600">
+                    <span>Lihat Dokumentasi</span>
+                    <i class="fa-solid fa-expand"></i>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <!-- 3. Inovasi & Lingkungan (SIKAP, ASRI, DT) -->
+        <div x-show="programTab === 'all' || programTab === 'inovasi'"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 translate-y-3"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             class="space-y-6 pt-4 tab-pane">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 text-white flex items-center justify-center font-bold shadow-md shadow-emerald-500/20">
+                <i class="fa-solid fa-seedling"></i>
+              </span>
+              <div>
+                <h3 class="text-xl font-bold text-slate-900">Program Unggulan Inovasi & Kewirausahaan</h3>
+                <p class="text-xs text-slate-500 font-medium">SIKAP (Ketahanan Pangan), Gerakan Indonesia ASRI, & SMA Double Track</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <template x-for="prog in mainPrograms" :key="prog.src">
+              <div @click="openModal(prog)" class="ambient-card rounded-3xl overflow-hidden flex flex-col cursor-pointer group">
+                <div class="relative h-52 w-full bg-slate-900 overflow-hidden flex items-center justify-center">
+                  <img :src="prog.src" :alt="prog.title"
+                       @load="window.markImageStatus(prog.src, true)"
+                       @error="tryAlternativeFormats($el, prog.src, prog.title)"
+                       class="w-full h-full object-contain group-hover:scale-105 transition duration-500 p-2">
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                  <div class="space-y-2">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                      <i :class="prog.icon"></i>
+                      <span x-text="prog.badge"></span>
+                    </span>
+                    <h4 class="text-lg font-extrabold text-slate-900 group-hover:text-emerald-700 transition" x-text="prog.title"></h4>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium" x-text="prog.desc"></p>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5 pt-2">
+                    <template x-for="tag in prog.highlights" :key="tag">
+                      <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 border border-slate-200" x-text="tag"></span>
+                    </template>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 4. PRESTASI SISWA & HALL OF FAME ==================== -->
+    <section id="slide-prestasi" class="py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-white/60 relative">
+      <div class="max-w-7xl mx-auto space-y-10">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div>
+            <div class="inline-flex items-center gap-2 text-amber-600 font-extrabold text-xs uppercase tracking-widest mb-2">
+              <i class="fa-solid fa-trophy"></i>
+              <span>BAGIAN 03 • JEJAK JUARA SMANJO</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Prestasi Siswa Akademik & Non-Akademik</h2>
+            <p class="text-slate-600 mt-2 max-w-2xl text-sm sm:text-base font-medium">Lonjakan kelulusan ke PTN serta deretan prestasi membanggakan di tingkat Kabupaten, Provinsi, hingga Internasional.</p>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 bg-white/80 p-1.5 rounded-2xl border border-white shadow-md self-start backdrop-blur-md">
+            <button @click="switchPrestasiTab('all')"
+                    :class="prestasiTab === 'all' ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold shadow-md shadow-amber-500/25' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-semibold'"
+                    class="px-4 py-2 rounded-xl text-xs sm:text-sm transition">
+              Semua Prestasi
+            </button>
+            <button @click="switchPrestasiTab('ptn')"
+                    :class="prestasiTab === 'ptn' ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold shadow-md shadow-amber-500/25' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-semibold'"
+                    class="px-4 py-2 rounded-xl text-xs sm:text-sm transition">
+              Grafik & Statistik PTN
+            </button>
+            <button @click="switchPrestasiTab('giant')"
+                    :class="prestasiTab === 'giant' ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold shadow-md shadow-amber-500/25' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-semibold'"
+                    class="px-4 py-2 rounded-xl text-xs sm:text-sm transition">
+              Akademik & Non-Akademik
+            </button>
+            <button @click="switchPrestasiTab('halloffame')"
+                    :class="prestasiTab === 'halloffame' ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold shadow-md shadow-amber-500/25' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-semibold'"
+                    class="px-4 py-2 rounded-xl text-xs sm:text-sm transition">
+              Hall of Fame (Juara)
+            </button>
+          </div>
+        </div>
+
+        <!-- A. SUB-SECTION: GRAFIK & STATISTIK PTN -->
+        <div x-show="prestasiTab === 'all' || prestasiTab === 'ptn'"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 translate-y-3"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             class="space-y-6 tab-pane">
+          <div class="ambient-card rounded-3xl p-6 sm:p-8 border border-sky-300/60 shadow-xl space-y-6">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-200 pb-5">
+              <div>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider bg-sky-100 text-sky-800 border border-sky-200">
+                  <i class="fa-solid fa-chart-line"></i>
+                  <span>TREN PERTUMBUHAN AKADEMIK 2024 – 2026</span>
+                </span>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">Grafik Lonjakan Siswa Diterima di PTN</h3>
+              </div>
+              <div class="bg-gradient-to-br from-emerald-500/15 via-sky-500/15 to-indigo-500/15 border border-emerald-300 rounded-2xl px-6 py-3.5 text-center shrink-0 shadow-xs">
+                <p class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-800">Total Kenaikan</p>
+                <p class="text-3xl font-extrabold bg-gradient-to-r from-emerald-600 to-teal-700 bg-clip-text text-transparent">+180%</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+              <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-3.5">
+                <template x-for="item in ptnStats" :key="item.year">
+                  <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center justify-between gap-3 shadow-xs">
+                    <div>
+                      <div class="flex items-center gap-2">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-slate-500" x-text="'Lulusan ' + item.year"></span>
+                        <span :class="item.badgeClass" class="px-2 py-0.5 rounded-md text-[10px] font-extrabold" x-text="item.growthLabel"></span>
+                      </div>
+                      <p class="text-2xl font-extrabold text-slate-900 mt-1" x-text="item.count + ' Siswa'"></p>
+                    </div>
+                    <div :class="item.iconBg" class="w-11 h-11 rounded-xl flex items-center justify-center text-lg font-bold shrink-0">
+                      <i :class="item.icon"></i>
+                    </div>
+                  </div>
+                </template>
+              </div>
+
+              <!-- Graphic Line & Progress Bars Container -->
+              <div class="lg:col-span-7 bg-white/95 rounded-2xl p-5 sm:p-6 border border-slate-200 space-y-6 shadow-inner relative overflow-hidden">
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2.5 h-2.5 rounded-full bg-sky-500 animate-ping"></span>
+                      <span class="text-xs font-extrabold uppercase tracking-wider text-slate-700">Kurva Lonjakan Real-Time (2024 - 2026)</span>
+                    </div>
+                    <span class="text-[11px] font-bold text-sky-600 bg-sky-50 px-2.5 py-1 rounded-full border border-sky-200">
+                      <i class="fa-solid fa-bolt mr-1"></i> Rekor Tertinggi
+                    </span>
+                  </div>
+
+                  <!-- Interactive Animated SVG Canvas -->
+                  <div class="w-full bg-slate-900 rounded-2xl p-3 sm:p-4 border border-slate-800 shadow-md relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:16px_16px] opacity-40"></div>
+                    
+                    <svg viewBox="0 0 580 180" class="w-full h-40 sm:h-44 overflow-visible relative z-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="ptnLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stop-color="#38bdf8" />
+                          <stop offset="50%" stop-color="#818cf8" />
+                          <stop offset="100%" stop-color="#f59e0b" />
+                        </linearGradient>
+                        <linearGradient id="ptnAreaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                          <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.38" />
+                          <stop offset="50%" stop-color="#6366f1" stop-opacity="0.18" />
+                          <stop offset="100%" stop-color="#0f172a" stop-opacity="0" />
+                        </linearGradient>
+                        <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+                          <feGaussianBlur stdDeviation="3.5" result="blur" />
+                          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                        </filter>
+                      </defs>
+
+                      <line x1="30" y1="25" x2="550" y2="25" stroke="#334155" stroke-dasharray="4,4" stroke-width="1" />
+                      <line x1="30" y1="50" x2="550" y2="50" stroke="#334155" stroke-dasharray="4,4" stroke-width="1" />
+                      <line x1="30" y1="145" x2="550" y2="145" stroke="#334155" stroke-dasharray="4,4" stroke-width="1" />
+
+                      <path d="M 60 145 C 180 145, 200 48, 290 48 C 380 48, 430 22, 520 22 L 520 165 L 60 165 Z"
+                            fill="url(#ptnAreaGrad)"
+                            class="anim-chart-area" />
+
+                      <path d="M 60 145 C 180 145, 200 48, 290 48 C 380 48, 430 22, 520 22"
+                            stroke="url(#ptnLineGrad)"
+                            stroke-width="4.5"
+                            stroke-linecap="round"
+                            filter="url(#neonGlow)"
+                            class="anim-chart-line" />
+
+                      <g class="anim-node-1">
+                        <circle cx="60" cy="145" r="9" fill="#0284c7" fill-opacity="0.35" class="animate-ping" />
+                        <circle cx="60" cy="145" r="6" fill="#0ea5e9" stroke="#ffffff" stroke-width="2" />
+                        <rect x="25" y="98" width="70" height="26" rx="7" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+                        <text x="60" y="115" fill="#e0f2fe" font-size="11" font-weight="800" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif">10 Siswa</text>
+                        <text x="60" y="166" fill="#94a3b8" font-size="11" font-weight="700" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif">2024</text>
+                      </g>
+
+                      <g class="anim-node-2">
+                        <circle cx="290" cy="48" r="10" fill="#6366f1" fill-opacity="0.35" class="animate-ping" />
+                        <circle cx="290" cy="48" r="6" fill="#818cf8" stroke="#ffffff" stroke-width="2" />
+                        <rect x="238" y="10" width="104" height="26" rx="7" fill="#0f172a" stroke="#818cf8" stroke-width="1" />
+                        <text x="290" y="27" fill="#e0e7ff" font-size="11" font-weight="800" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif">25 Siswa (+150%)</text>
+                        <text x="290" y="166" fill="#cbd5e1" font-size="11" font-weight="700" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif">2025</text>
+                      </g>
+
+                      <g class="anim-node-3">
+                        <circle cx="520" cy="22" r="12" fill="#f59e0b" fill-opacity="0.4" class="animate-ping" />
+                        <circle cx="520" cy="22" r="7" fill="#fbbf24" stroke="#ffffff" stroke-width="2.5" />
+                        <rect x="455" y="32" width="120" height="28" rx="8" fill="#f59e0b" stroke="#fef3c7" stroke-width="1.5" />
+                        <text x="515" y="50" fill="#0f172a" font-size="11" font-weight="800" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif">⭐ 28 Siswa (Rekor)</text>
+                        <text x="520" y="166" fill="#fcd34d" font-size="11" font-weight="800" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif">2026</text>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Progress Bars -->
+                <div class="space-y-4 pt-1 border-t border-slate-200">
+                  <div class="space-y-1.5">
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="font-bold text-slate-600">Lulusan 2024</span>
+                      <span class="font-extrabold text-slate-900">10 Siswa</span>
+                    </div>
+                    <div class="w-full h-6 bg-slate-100 rounded-xl overflow-hidden p-0.5 border border-slate-200">
+                      <div class="h-full bg-slate-400 rounded-lg flex items-center justify-end pr-2.5 text-[10px] font-extrabold text-white" style="width: 36%">36%</div>
+                    </div>
+                  </div>
+
+                  <div class="space-y-1.5">
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="font-bold text-sky-700">Lulusan 2025</span>
+                      <span class="font-extrabold text-sky-700">25 Siswa (+150%)</span>
+                    </div>
+                    <div class="w-full h-6 bg-slate-100 rounded-xl overflow-hidden p-0.5 border border-slate-200">
+                      <div class="h-full bg-gradient-to-r from-sky-500 to-indigo-500 rounded-lg flex items-center justify-end pr-2.5 text-[10px] font-extrabold text-white shadow-xs" style="width: 80%">25 Siswa</div>
+                    </div>
+                  </div>
+
+                  <div class="space-y-1.5">
+                    <div class="flex items-center justify-between text-sm">
+                      <span class="font-bold text-amber-700">Lulusan 2026 (Lonjakan Drastis)</span>
+                      <span class="font-extrabold text-amber-700">28 Siswa (+180% Total)</span>
+                    </div>
+                    <div class="w-full h-7 bg-slate-100 rounded-xl overflow-hidden p-0.5 border border-slate-200">
+                      <div class="h-full bg-gradient-to-r from-amber-500 via-orange-500 to-emerald-500 rounded-lg flex items-center justify-end pr-3 text-xs font-extrabold text-white shadow-md" style="width: 100%">28 Siswa</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- B. SUB-SECTION: GIANT CARDS AKADEMIK & NON-AKADEMIK -->
+        <div x-show="prestasiTab === 'all' || prestasiTab === 'giant'"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 translate-y-3"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             class="space-y-6 pt-4 tab-pane">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <template x-for="ach in achievements" :key="ach.src">
+              <div @click="openModal(ach)" class="ambient-card rounded-3xl overflow-hidden flex flex-col cursor-pointer group">
+                <div class="relative h-72 w-full bg-slate-900 overflow-hidden flex items-center justify-center">
+                  <img :src="ach.src" :alt="ach.title"
+                       @load="window.markImageStatus(ach.src, true)"
+                       @error="tryAlternativeFormats($el, ach.src, ach.title)"
+                       class="w-full h-full object-contain group-hover:scale-105 transition duration-500 p-2">
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent"></div>
+                  <span class="absolute top-4 left-4 px-3.5 py-1.5 rounded-full text-xs font-extrabold uppercase tracking-wider bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg" x-text="ach.badge"></span>
+                  <div class="absolute bottom-4 left-5 right-5">
+                    <h3 class="text-2xl font-extrabold text-white" x-text="ach.title"></h3>
+                    <p class="text-xs text-amber-300 font-semibold mt-0.5" x-text="ach.subtitle"></p>
+                  </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between space-y-5">
+                  <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-medium" x-text="ach.desc"></p>
+                  <div class="space-y-2.5 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                    <p class="text-xs font-bold uppercase tracking-wider text-sky-700">Sorotan Capaian & Kebanggaan:</p>
+                    <ul class="space-y-2">
+                      <template x-for="point in ach.highlights" :key="point">
+                        <li class="text-xs sm:text-sm text-slate-700 font-medium flex items-start gap-2.5">
+                          <i class="fa-solid fa-medal text-amber-500 mt-1"></i>
+                          <span x-text="point"></span>
+                        </li>
+                      </template>
+                    </ul>
+                  </div>
+                  <div class="flex items-center justify-between text-xs font-bold text-amber-600 pt-1">
+                    <span>Klik untuk melihat detail</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <!-- C. SUB-SECTION: HALL OF FAME (BINTANG JUARA) -->
+        <div x-show="prestasiTab === 'all' || prestasiTab === 'halloffame'"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 translate-y-3"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             class="space-y-6 pt-4 tab-pane">
+          <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+            <div class="flex items-center gap-3.5">
+              <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center text-xl font-extrabold shadow-md shadow-amber-500/25">
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <div>
+                <span class="text-[11px] font-extrabold uppercase tracking-widest text-amber-700">HALL OF FAME • BINTANG SMANJO</span>
+                <h3 class="text-2xl font-extrabold text-slate-900">Deretan Sang Juara</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+            <template x-for="champ in studentChampions" :key="champ.src">
+              <div @click="openModal(champ)" class="ambient-card rounded-3xl overflow-hidden flex flex-col cursor-pointer group border border-amber-300/80 hover:border-amber-400">
+                <div class="relative h-60 w-full bg-slate-900 overflow-hidden flex items-center justify-center">
+                  <img :src="champ.src" :alt="champ.title"
+                       @load="window.markImageStatus(champ.src, true)"
+                       @error="tryAlternativeFormats($el, champ.src, champ.name)"
+                       class="w-full h-full object-contain group-hover:scale-110 transition duration-500 p-2">
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                  <span :class="champ.badgeColor" class="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-extrabold uppercase shadow-md flex items-center gap-1.5">
+                    <i :class="champ.icon"></i>
+                    <span x-text="champ.medal"></span>
+                  </span>
+                  <div class="absolute bottom-3 left-3 right-3">
+                    <span class="inline-block px-2.5 py-0.5 rounded-md bg-sky-600 text-white text-[10px] font-bold uppercase shadow-xs" x-text="champ.level"></span>
+                  </div>
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                  <div>
+                    <h4 class="text-lg font-extrabold text-slate-900 group-hover:text-amber-700 transition leading-snug" x-text="champ.name"></h4>
+                    <p class="text-xs font-bold text-amber-700 mt-1" x-text="champ.achievement"></p>
+                    <p class="text-xs text-slate-600 mt-2.5 leading-relaxed font-medium" x-text="champ.desc"></p>
+                  </div>
+                  <div class="pt-3 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-amber-700">
+                    <span x-text="champ.ekskulTag"></span>
+                    <i class="fa-solid fa-expand"></i>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 5. 11 EKSTRAKURIKULER SMAN 1 WONGSOREJO ==================== -->
+    <section id="slide-ekskul" class="py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-white/60 relative">
+      <div class="max-w-7xl mx-auto space-y-10">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+          <div>
+            <div class="inline-flex items-center gap-2 text-emerald-600 font-extrabold text-xs uppercase tracking-widest mb-2">
+              <i class="fa-solid fa-users-rays"></i>
+              <span>BAGIAN 04 • 11 WADAH BAKAT & ORGANISASI</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Ekstrakurikuler SMAN 1 Wongsorejo</h2>
+          </div>
+          <div class="flex flex-wrap gap-1.5 bg-white/80 p-1.5 rounded-2xl border border-white shadow-md self-start backdrop-blur-md">
+            <template x-for="cat in ekskulCategories" :key="cat.id">
+              <button @click="switchEkskulFilter(cat.id)"
+                      :class="ekskulFilter === cat.id ? 'bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold shadow-md shadow-sky-500/25' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-semibold'"
+                      class="px-3.5 py-2 rounded-xl text-xs transition flex items-center gap-1.5">
+                <i :class="cat.icon"></i>
+                <span x-text="cat.label"></span>
+              </button>
+            </template>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 tab-pane">
+          <template x-for="(eks, index) in filteredEkskul" :key="eks.src">
+            <div @click="openModal(eks)" class="ambient-card rounded-3xl overflow-hidden flex flex-col cursor-pointer group">
+              <div class="relative h-48 w-full bg-slate-900 overflow-hidden flex items-center justify-center">
+                <img :src="eks.src" :alt="eks.title"
+                     @load="window.markImageStatus(eks.src, true)"
+                     @error="tryAlternativeFormats($el, eks.src, eks.title)"
+                     class="w-full h-full object-contain group-hover:scale-110 transition duration-500 p-2">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg text-[10px] font-extrabold uppercase tracking-wider bg-white/90 text-sky-800 border border-sky-300 shadow-xs" x-text="eks.categoryLabel"></span>
+              </div>
+              <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                <div>
+                  <div class="flex items-center justify-between gap-2">
+                    <h3 class="text-lg font-extrabold text-slate-900 group-hover:text-sky-600 transition" x-text="eks.title"></h3>
+                    <span class="w-8 h-8 rounded-xl bg-sky-100 flex items-center justify-center text-sky-600 shrink-0">
+                      <i :class="eks.icon"></i>
+                    </span>
+                  </div>
+                  <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed line-clamp-3 font-medium" x-text="eks.desc"></p>
+                </div>
+                <div class="pt-3 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-sky-600">
+                  <span>Lihat Profil & Foto</span>
+                  <i class="fa-solid fa-circle-chevron-right"></i>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 6. SLIDE PENUTUP & KREDIT FILM ==================== -->
+    <section id="slide-credits" class="relative py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-white/60 overflow-hidden">
+      <!-- Background Image Gedung Sekolah SMANJO Sama Seperti Slide 1 -->
+      <div class="absolute inset-0 z-0">
+        <img src="sman1wongsorejo.jpg"
+             alt="Background Gedung SMAN 1 Wongsorejo"
+             @load="window.markImageStatus('sman1wongsorejo.jpg', true)"
+             @error="tryAlternativeFormats($el, 'sman1wongsorejo.jpg')"
+             class="w-full h-full object-cover scale-100 brightness-[0.92] contrast-[1.1] transition duration-700">
+        <div class="absolute inset-0 closing-clear-overlay"></div>
+      </div>
+
+      <div class="relative z-10 max-w-4xl mx-auto space-y-8 text-center">
+        
+        <div class="space-y-4">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-400/20 border border-amber-300 text-amber-300 font-extrabold text-xs uppercase tracking-widest shadow-md backdrop-blur-md">
+            <i class="fa-solid fa-heart text-amber-400"></i>
+            <span>TERIMA KASIH ATAS KUNJUNGANNYA</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight drop-shadow-md">
+            Mari Bergabung & Sukses Bersama di <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-sky-300 to-emerald-300">SMAN 1 Wongsorejo</span>
+          </h2>
+          <p class="text-slate-200 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed font-medium drop-shadow">
+            Terima kasih kepada Bapak/Ibu Guru dan adik-adik siswa-siswi Kelas 9 SMPN 1 Wongsorejo. Sampai jumpa di kampus SMANJO tercinta!
+          </p>
+        </div>
+
+        <!-- Tombol Kontrol Musik Pengiring Sinematik -->
+        <div class="flex items-center justify-center gap-3">
+          <button @click="toggleMusic()" 
+                  class="px-4 py-2 rounded-full bg-slate-900/80 hover:bg-sky-500 text-white border border-sky-400/50 text-xs font-bold transition flex items-center gap-2 shadow-lg backdrop-blur-md">
+            <i :class="isMusicPlaying ? 'fa-solid fa-volume-high text-emerald-400 animate-pulse' : 'fa-solid fa-volume-xmark text-slate-400'"></i>
+            <span x-text="isMusicPlaying ? 'Musik Pengiring Aktif (Klik untuk Jeda)' : 'Putar Musik Sinematik Penutup'"></span>
+          </button>
+        </div>
+
+        <!-- Cinematic Rolling Credits Box -->
+        <div class="bg-slate-950/85 backdrop-blur-xl text-slate-100 rounded-3xl p-6 sm:p-10 border border-slate-700/80 shadow-2xl relative overflow-hidden box-glow-ambient">
+          <div class="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-slate-950 via-slate-950/80 to-transparent z-10 pointer-events-none"></div>
+          <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent z-10 pointer-events-none"></div>
+
+          <div class="credits-container">
+            <div class="credits-content space-y-10 text-center py-8">
+              
+              <!-- Block 1: Visi & Misi Terkini -->
+              <div class="space-y-3">
+                <p class="text-xs uppercase tracking-widest text-amber-400 font-extrabold">— VISI & MISI SMANJO —</p>
+                <p class="text-base sm:text-lg font-bold text-white px-6 leading-relaxed">
+                  "Unggul dalam prestasi, Berkarakter profil pelajar pancasila, Berbudaya Lingkungan dan Berwirausaha."
+                </p>
+              </div>
+
+              <!-- Block 2: Kurikulum Merdeka -->
+              <div class="space-y-2">
+                <p class="text-xs uppercase tracking-widest text-indigo-400 font-extrabold">— KURIKULUM MERDEKA —</p>
+                <p class="text-sm text-slate-200">Intrakurikuler Minat Bakat • Projek Kokurikuler P5 • 11 Ekstrakurikuler Pilihan</p>
+              </div>
+
+              <!-- Block 3: Deretan Sang Juara -->
+              <div class="space-y-2">
+                <p class="text-xs uppercase tracking-widest text-sky-400 font-extrabold">— BINTANG PRESTASI SISWA —</p>
+                <p class="text-sm text-slate-200">⭐ Cintya Qonita & Amelia Putri Anggraini (Juara 1 & 2 Karate Internasional Kemenpora)</p>
+                <p class="text-sm text-slate-200">⭐ Cintya Qonita (Juara 1 Jurnalistik Kabupaten)</p>
+                <p class="text-sm text-slate-200">⭐ Moh. Wildan, Moh. Bayu, & Kenza (Pemain Voli Kejurprov Jatim)</p>
+                <p class="text-sm text-slate-200">⭐ Andita Nafa Rezza Yana (Juara 1 Pencak Silat Kabupaten)</p>
+                <p class="text-sm text-slate-200">⭐ Novita Herfina Putri (Juara 3 Voli Pantai POPDA XV 2026)</p>
+              </div>
+
+              <!-- Block 4: 11 Ekstrakurikuler -->
+              <div class="space-y-2">
+                <p class="text-xs uppercase tracking-widest text-emerald-400 font-extrabold">— 11 WADAH EKSTRAKURIKULER SMANJO —</p>
+                <p class="text-sm text-slate-300">Pramuka • Seni Tari • Bola Voli • PMR • Sepak Bola & Futsal • Bela Diri</p>
+                <p class="text-sm text-slate-300">Seni Musik • WIS TV (Broadcasting) • PAPI • Paskibraka • KIR (Karya Ilmiah Remaja)</p>
+              </div>
+
+              <!-- Block 5: Program Unggulan & Pembiasaan -->
+              <div class="space-y-2">
+                <p class="text-xs uppercase tracking-widest text-amber-400 font-extrabold">— PROGRAM SEKOLAH & PEMBIASAAN —</p>
+                <p class="text-sm text-slate-300">PPK • SIKAP • ASRI • Budaya 5S • Berselang • Pembatasan Gadget • Jum'at Taqwa, Sehat, Bergizi & Bersih • Double Track</p>
+              </div>
+
+              <!-- Block 6: Closing Production -->
+              <div class="space-y-2 pt-4">
+                <p class="text-xs uppercase tracking-widest text-sky-400 font-extrabold">— PRODUKSI & PERSEMBAHAN —</p>
+                <p class="text-base font-extrabold text-white">Tim Pengembang & Kurikulum SMAN 1 Wongsorejo</p>
+                <p class="text-xs text-slate-400">© 2026 SMANJO • All Rights Reserved</p>
+              </div>
+
+              <!-- ==================== BANNER AKHIR: MARI BERGABUNG BERSAMA SMANJO #SMANJOPANGGAHTATAG ==================== -->
+              <div class="pt-24 pb-8 flex flex-col items-center justify-center min-h-[300px] space-y-4">
+                <div class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-sky-500/20 border border-sky-400/40 text-sky-300 text-xs font-bold uppercase tracking-widest">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <span>GERBANG MASA DEPAN GEMILANG</span>
+                </div>
+                
+                <h3 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] uppercase text-gradient-shimmer drop-shadow-2xl px-2">
+                  MARI BERGABUNG BERSAMA SMANJO
+                </h3>
+
+                <p class="text-2xl sm:text-4xl font-extrabold tracking-widest bg-gradient-to-r from-amber-400 via-yellow-200 to-amber-500 bg-clip-text text-transparent drop-shadow-lg">
+                  #SMANJOPANGGAHTATAG
+                </p>
+
+                <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto italic font-medium pt-2">
+                  "Menjadi bagian dari generasi tangguh, berprestasi, dan berkarakter mulia."
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-2 flex justify-center gap-3">
+          <button @click="goToSlide(0)" class="px-6 py-3 rounded-xl bg-white/20 hover:bg-white/30 text-white border border-white/30 text-xs font-bold transition shadow-lg backdrop-blur-md">
+            <i class="fa-solid fa-rotate-left mr-2"></i> Kembali ke Awal Presentasi
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="border-t border-slate-200 bg-white/90 py-10 px-4 sm:px-6 lg:px-8 relative z-10 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div>
+        <p class="font-extrabold text-slate-900 text-base">SMAN 1 WONGSOREJO (SMANJO) • BANYUWANGI</p>
+        <p class="text-xs text-slate-500 font-medium mt-1">Terima kasih atas kunjungan keluarga besar siswa-siswi Kelas 9 & Bapak/Ibu Guru SMPN 1 Wongsorejo.</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <button @click="showChecklistModal = true" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-amber-800 border border-amber-300 transition shadow-xs">
+          <i class="fa-solid fa-folder-open mr-1.5 text-amber-600"></i> Panduan Folder Foto (35 File)
+        </button>
+        <a href="#slide-hero" @click.prevent="goToSlide(0)" class="w-10 h-10 rounded-xl bg-sky-100 hover:bg-sky-500 text-sky-700 hover:text-white flex items-center justify-center transition shadow-xs">
+          <i class="fa-solid fa-arrow-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODAL 1: LIGHTBOX DETAIL ==================== -->
+  <div x-show="activeModal" x-cloak x-transition.opacity class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto" @click.self="activeModal = null">
+    <div x-show="activeModal" x-transition.scale class="bg-white border border-slate-200 rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl my-8">
+      <template x-if="activeModal">
+        <div>
+          <div class="relative h-72 sm:h-96 w-full bg-slate-900 flex items-center justify-center p-4">
+            <img :src="activeModal.src" :alt="activeModal.title"
+                 @load="window.markImageStatus(activeModal.src, true)"
+                 @error="tryAlternativeFormats($el, activeModal.src, activeModal.title)"
+                 class="w-full h-full object-contain">
+            <button @click="activeModal = null" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-slate-950/80 hover:bg-rose-500 text-white flex items-center justify-center transition shadow-lg">
+              <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+          </div>
+          <div class="p-6 sm:p-8 space-y-4">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-800 border border-sky-300" x-text="activeModal.category || activeModal.categoryLabel || 'Dokumentasi SMANJO'"></span>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900" x-text="activeModal.title"></h3>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed font-medium" x-text="activeModal.desc"></p>
+            <template x-if="activeModal.highlights && activeModal.highlights.length">
+              <div class="pt-3">
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Poin Unggulan:</p>
+                <div class="flex flex-wrap gap-2">
+                  <template x-for="h in activeModal.highlights" :key="h">
+                    <span class="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-800 text-xs font-semibold border border-slate-200">
+                      <i class="fa-solid fa-circle-check mr-1 text-emerald-600"></i>
+                      <span x-text="h"></span>
+                    </span>
+                  </template>
+                </div>
+              </div>
+            </template>
+            <div class="pt-4 border-t border-slate-200 flex justify-end">
+              <button @click="activeModal = null" class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition">Tutup</button>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL 2: CHECKLIST FOLDER FOTO (35 FILE) ==================== -->
+  <div x-show="showChecklistModal" x-cloak x-transition.opacity class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto" @click.self="showChecklistModal = false">
+    <div class="bg-white border border-slate-200 rounded-3xl max-w-4xl w-full overflow-hidden shadow-2xl my-8">
+      <div class="p-6 sm:p-8 border-b border-slate-200 flex items-start justify-between gap-4 bg-slate-50">
+        <div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300">PANDUAN FOLDER PANITIA (35 FILE FOTO)</span>
+          <h3 class="text-2xl font-extrabold text-slate-900 mt-2">Daftar File Foto (.JPEG / .jpg)</h3>
+          <p class="text-xs sm:text-sm text-slate-600 mt-1">Sistem otomatis mendeteksi ekstensi huruf besar <strong class="text-amber-700">.JPEG</strong> maupun <strong class="text-amber-700">.jpg</strong>:</p>
+        </div>
+        <button @click="showChecklistModal = false" class="w-10 h-10 rounded-full bg-slate-200 hover:bg-rose-500 hover:text-white text-slate-700 flex items-center justify-center shrink-0 transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="p-6 sm:p-8 space-y-6 max-h-[65vh] overflow-y-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <template x-for="(file, idx) in allRequiredFiles" :key="file.src">
+            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-2">
+              <div class="min-w-0">
+                <p class="text-[11px] text-slate-500 truncate" x-text="(idx + 1) + '. ' + file.label"></p>
+                <p class="text-xs font-mono font-bold text-amber-800 truncate mt-0.5" x-text="file.src"></p>
+              </div>
+              <button @click="copySingleFilename(file.src)" class="px-2.5 py-1.5 rounded-lg bg-white hover:bg-sky-500 hover:text-white text-slate-700 text-[11px] font-semibold transition shrink-0 border border-slate-200">Salin</button>
+            </div>
+          </template>
+        </div>
+      </div>
+      <div class="px-6 py-4 bg-slate-50 border-t border-slate-200 flex justify-end">
+        <button @click="showChecklistModal = false" class="px-6 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs transition">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS & SYNTHESIZER MUSIC ENGINE ==================== -->
+  <script>
+    window.imageStatuses = {};
+    window.markImageStatus = function(filename, loaded) { window.imageStatuses[filename] = loaded; };
+
+    window.tryAlternativeFormats = function(imgEl, filename, titleText) {
+      const currentSrc = imgEl.src;
+      if (currentSrc.endsWith('.jpg') || currentSrc.endsWith('.JPG')) {
+        imgEl.src = filename.replace(/\.(jpg|JPG)$/, '.JPEG');
+        return;
+      } else if (currentSrc.endsWith('.JPEG')) {
+        imgEl.src = filename.replace(/\.JPEG$/, '.jpeg');
+        return;
+      }
+
+      imgEl.onerror = null;
+      window.markImageStatus(filename, false);
+      const safeTitle = (titleText || 'Kegiatan SMANJO').replace(/["&<>]/g, '');
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+        <defs>
+          <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0f172a"/>
+            <stop offset="50%" stop-color="#1e293b"/>
+            <stop offset="100%" stop-color="#0c4a6e"/>
+          </linearGradient>
+        </defs>
+        <rect width="800" height="500" fill="url(#bg)"/>
+        <circle cx="700" cy="80" r="140" fill="#0ea5e9" fill-opacity="0.15"/>
+        <circle cx="100" cy="420" r="160" fill="#f59e0b" fill-opacity="0.12"/>
+        <rect x="60" y="55" width="680" height="390" rx="24" fill="#0f172a" fill-opacity="0.55" stroke="#38bdf8" stroke-opacity="0.35" stroke-width="2" stroke-dasharray="10,8"/>
+        <text x="400" y="195" text-anchor="middle" fill="#38bdf8" font-family="Plus Jakarta Sans, sans-serif" font-size="22" font-weight="700">DOKUMENTASI SMAN 1 WONGSOREJO</text>
+        <text x="400" y="245" text-anchor="middle" fill="#ffffff" font-family="Plus Jakarta Sans, sans-serif" font-size="32" font-weight="800">${safeTitle}</text>
+        <rect x="180" y="285" width="440" height="54" rx="14" fill="#f59e0b" fill-opacity="0.18" stroke="#f59e0b" stroke-width="1.5"/>
+        <text x="400" y="319" text-anchor="middle" fill="#fcd34d" font-family="monospace" font-size="19" font-weight="700">Siapkan file: ${filename} (.JPEG)</text>
+        <text x="400" y="385" text-anchor="middle" fill="#94a3b8" font-family="Plus Jakarta Sans, sans-serif" font-size="16">Taruh foto di satu folder dengan file HTML ini</text>
+      </svg>`;
+      imgEl.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+    };
+
+    /* Web Audio API: Cinematic Ambient Arpeggio Engine */
+    class CinematicCreditsAudio {
+      constructor() {
+        this.ctx = null;
+        this.isPlaying = false;
+        this.step = 0;
+        this.timer = null;
+        // Tangga nada emosional inspiratif: D Mayor Pentatonic & Ninth Chords
+        this.notes = [293.66, 369.99, 440.00, 554.37, 587.33, 739.99, 880.00, 659.25, 440.00, 369.99];
+      }
+
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AudioContext();
+        }
+        if (this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+
+      playTone(freq, time, duration = 1.4) {
+        if (!this.ctx) return;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, time);
+
+        // Subtly detuned warm second oscillator for lush pad feel
+        const osc2 = this.ctx.createOscillator();
+        const gain2 = this.ctx.createGain();
+        osc2.type = 'triangle';
+        osc2.frequency.setValueAtTime(freq * 0.5, time);
+
+        gain.gain.setValueAtTime(0, time);
+        gain.gain.linearRampToValueAtTime(0.08, time + 0.35);
+        gain.gain.exponentialRampToValueAtTime(0.0001, time + duration);
+
+        gain2.gain.setValueAtTime(0, time);
+        gain2.gain.linearRampToValueAtTime(0.04, time + 0.4);
+        gain2.gain.exponentialRampToValueAtTime(0.0001, time + duration);
+
+        osc.connect(gain);
+        osc2.connect(gain2);
+        gain.connect(this.ctx.destination);
+        gain2.connect(this.ctx.destination);
+
+        osc.start(time);
+        osc2.start(time);
+        osc.stop(time + duration);
+        osc2.stop(time + duration);
+      }
+
+      start() {
+        this.init();
+        if (this.isPlaying) return;
+        this.isPlaying = true;
+
+        const loop = () => {
+          if (!this.isPlaying) return;
+          const now = this.ctx.currentTime;
+          const freq = this.notes[this.step % this.notes.length];
+          this.playTone(freq, now, 1.8);
+
+          // Sesekali berikan aksen bas megah
+          if (this.step % 4 === 0) {
+            this.playTone(146.83, now, 2.8); // D3 Warm Bass
+          }
+
+          this.step++;
+          this.timer = setTimeout(loop, 450);
+        };
+        loop();
+      }
+
+      stop() {
+        this.isPlaying = false;
+        if (this.timer) {
+          clearTimeout(this.timer);
+          this.timer = null;
+        }
+      }
+    }
+
+    const audioEngine = new CinematicCreditsAudio();
+
+    function smanjoApp() {
+      return {
+        currentSlide: 0,
+        presentationMode: false,
+        isTransitioning: false,
+        isMusicPlaying: false,
+        kurikulumTab: 'pilar',
+        programTab: 'all',
+        prestasiTab: 'all',
+        ekskulFilter: 'all',
+        activeModal: null,
+        showChecklistModal: false,
+
+        sections: [
+          { id: 'slide-hero', label: 'Sambutan', icon: 'fa-solid fa-house' },
+          { id: 'slide-kurikulum', label: 'Kurikulum Merdeka', icon: 'fa-solid fa-graduation-cap' },
+          { id: 'slide-program', label: 'Program Sekolah', icon: 'fa-solid fa-compass' },
+          { id: 'slide-prestasi', label: 'Prestasi', icon: 'fa-solid fa-trophy' },
+          { id: 'slide-ekskul', label: '11 Ekskul', icon: 'fa-solid fa-futbol' },
+          { id: 'slide-credits', label: 'Penutup & Kredit', icon: 'fa-solid fa-film' }
+        ],
+
+        budayaPrograms: [
+          {
+            title: 'Budaya 5S (Senyum, Salam, Sapa, Sopan, Santun)',
+            src: 'budaya5s.jpg',
+            badge: 'Karakter & Etika',
+            category: 'Pembiasaan Karakter Ramah',
+            icon: 'fa-solid fa-face-smile',
+            desc: 'Pembiasaan ramah, salam hormat kepada bapak/ibu guru dan sapaan hangat antar-teman di gerbang sekolah setiap pagi.',
+            highlights: ['Senyum & Salam di Gerbang Pagi', 'Sopan Santun Antar-Warga Sekolah', 'Keluarga Ramah SMANJO']
+          },
+          {
+            title: 'Program Berselang (Bersih Sebelum Pulang)',
+            src: 'berselang.jpg',
+            badge: 'Kebersihan & Peduli Kelas',
+            category: 'Tanggung Jawab Lingkungan',
+            icon: 'fa-solid fa-broom-ball',
+            desc: 'Aksi gotong royong merapikan kelas dan memungut sampah 10 menit sebelum bel kepulangan berbunyi agar kelas siap digunakan esok hari.',
+            highlights: ['Ruang Kelas Bersih Sebelum Pulang', 'Tanggung Jawab Bersama', 'Suasana Belajar Nyaman & Asri']
+          },
+          {
+            title: 'Kebijakan Pembatasan Gadget',
+            src: 'pembatasangadget.jpg',
+            badge: 'Fokus Belajar Digital Sehat',
+            category: 'Disiplin Digital Siswa',
+            icon: 'fa-solid fa-mobile-screen-button',
+            desc: 'Penggunaan smartphone dikelola secara terarah di loker/tas kelas dan hanya dibuka saat instruksi pembelajaran digital guru.',
+            highlights: ['Fokus Penuh Selama Pembelajaran', 'Meningkatkan Interaksi Sosial Nyata', 'Literasi & Detoks Digital Sehat']
+          }
+        ],
+
+        ppkPrograms: [
+          { title: 'Asmaul Husna Bersama', src: 'asmaulhusna.jpg', group: 'ppk-harian', badge: 'PPK Pagi Harian', category: 'Pembiasaan Karakter Religius', icon: 'fa-solid fa-hands-praying', desc: 'Mengawali pagi di SMAN 1 Wongsorejo dengan lantunan Asmaul Husna secara berjamaah.', highlights: ['Dilaksanakan Sebelum Jam Pelajaran', 'Karakter Religius'] },
+          { title: 'Doa Bersama', src: 'doabersama.jpg', group: 'ppk-harian', badge: 'PPK Pagi Harian', category: 'Pembiasaan Spiritual', icon: 'fa-solid fa-book-quran', desc: 'Budaya berdoa bersama sebelum dan sesudah kegiatan belajar mengajar.', highlights: ['Dipimpin Siswa Bergantian', 'Keberkahan Ilmu'] },
+          { title: 'Menyanyikan Indonesia Raya', src: 'indonesiaraya.jpg', group: 'ppk-harian', badge: 'PPK Pagi Harian', category: 'Pembiasaan Nasionalisme', icon: 'fa-solid fa-flag', desc: 'Menumbuhkan semangat cinta tanah air dan jiwa patriotisme seluruh siswa.', highlights: ['Sikap Sempurna & Khidmat', 'Cinta Tanah Air'] },
+          { title: "Jum'at Bersih", src: 'jumatbersih.jpg', group: 'ppk-jumat', badge: "Program Hari Jum'at", category: 'Peduli Lingkungan', icon: 'fa-solid fa-broom', desc: 'Aksi gotong royong membersihkan kelas, taman, dan lingkungan sekolah.', highlights: ['Kerja Bakti Taman', 'Gerakan Indonesia ASRI'] },
+          { title: "Jum'at Taqwa", src: 'jumattaqwa.jpg', group: 'ppk-jumat', badge: "Program Hari Jum'at", category: 'Pembinaan Rohani', icon: 'fa-solid fa-mosque', desc: 'Kajian keagamaan, istighosah, dan tausiyah untuk memperkokoh iman remaja.', highlights: ['Kajian Remaja & Istighosah', 'Akhlak Mulia'] },
+          { title: "Jum'at Sehat", src: 'jumatsehat.jpg', group: 'ppk-jumat', badge: "Program Hari Jum'at", category: 'Kebugaran Jasmani', icon: 'fa-solid fa-heart-circle-bolt', desc: 'Senam bersama dan menjaga kebugaran jasmani warga sekolah.', highlights: ['Senam Bugar Bersama', 'Kesehatan Remaja'] },
+          { title: "Jum'at Bergizi", src: 'jumatbergizi.jpg', group: 'ppk-jumat', badge: "Program Hari Jum'at", category: 'Gizi Sehat & Bugar', icon: 'fa-solid fa-apple-whole', desc: 'Pembiasaan sarapan sehat bersama dengan menu bergizi seimbang untuk mendukung konsentrasi belajar siswa.', highlights: ['Sarapan Sehat Bersama', 'Nutrisi Tumbuh Remaja'] }
+        ],
+
+        mainPrograms: [
+          { title: 'Program SIKAP (Ketahanan Pangan)', src: 'sikap.jpg', badge: 'Inovasi Ketahanan Pangan', category: 'Program Unggulan', icon: 'fa-solid fa-wheat-awn', desc: 'Inovasi pemanfaatan lahan sekolah melalui budidaya tanaman pangan dan agrikultur.', highlights: ['Kebun Produktif', 'Kemandirian Pangan'] },
+          { title: 'Gerakan Indonesia ASRI', src: 'indonesiaasri.jpg', badge: 'Aman • Sehat • Rindang • Indah', category: 'Wawasan Lingkungan', icon: 'fa-solid fa-tree', desc: 'Komitmen menciptakan ekosistem sekolah hijau, rindang, dan asri.', highlights: ['Kampus Hijau', 'Zona Nyaman'] },
+          { title: 'Program DT (Double Track)', src: 'doubletrack.jpg', badge: 'Vokasi & Wirausaha Mandiri', category: 'Unggulan Jatim', icon: 'fa-solid fa-briefcase', desc: 'Ijazah SMA plus sertifikat keterampilan kerja & kewirausahaan mandiri.', highlights: ['Siap Kuliah & Kerja', 'Produk Vokasi'] }
+        ],
+
+        achievements: [
+          {
+            title: 'Prestasi Akademik & Jurnalistik SMAN 1 Wongsorejo',
+            subtitle: '28 Siswa Lolos PTN 2026 (+180%), Juara 1 Jurnalistik Kabupaten & Riset',
+            src: 'prestasiakademik.jpg',
+            badge: 'Akademik, Jurnalistik & PTN',
+            category: 'Prestasi Akademik Siswa',
+            desc: 'Siswa-siswi SMAN 1 Wongsorejo terus mencetak prestasi akademik mulai dari kenaikan lulusan diterima di PTN (10 di 2024 → 25 di 2025 [+150%] → 28 di 2026), hingga Juara 1 Jurnalistik Tingkat Kabupaten.',
+            highlights: ['Tren Lolos PTN Naik Pesat: 2024 (10) → 2025 (25 / +150%) → 2026 (28)', 'Cintya Qonita — Juara 1 Jurnalistik Tingkat Kabupaten', 'Inovasi Kewirausahaan Double Track']
+          },
+          {
+            title: 'Prestasi Non-Akademik & Olahraga SMAN 1 Wongsorejo',
+            subtitle: 'Juara Internasional Karate (Kemenpora), Pencak Silat, Voli Kejurprov & POPDA XV',
+            src: 'prestasinonakademik.jpg',
+            badge: 'Internasional, Kejurprov & POPDA',
+            category: 'Prestasi Non-Akademik Siswa',
+            desc: 'Pembinaan ekstrakurikuler sukses mengantarkan siswa meraih Juara 1 & 2 International Karate Championship (Kemenpora), Juara 1 Pencak Silat Kabupaten, Kejurprov Jatim, hingga POPDA XV 2026!',
+            highlights: [
+              'Cintya Qonita (Juara 1) & Amelia Putri Anggraini (Juara 2) — International Karate Championship (Kemenpora)',
+              'Andita Nafa Rezza Yana — Juara 1 Pencak Silat Tingkat Kabupaten',
+              'Moh. Wildan, Moh. Bayu, & Kenza (Voli Kejurprov) & Novita Herfina Putri (Juara 3 Voli Pantai POPDA XV 2026)'
+            ]
+          }
+        ],
+
+        ptnStats: [
+          { year: '2024', count: 10, growthLabel: 'Tahun Dasar', badgeClass: 'bg-slate-200 text-slate-700', desc: 'Lolos SNBP, SNBT & Mandiri', icon: 'fa-solid fa-user-graduate', iconBg: 'bg-slate-100 text-slate-700' },
+          { year: '2025', count: 25, growthLabel: 'Naik +150%', badgeClass: 'bg-sky-100 text-sky-800 border border-sky-300', desc: 'Lonjakan signifikan (+15 siswa)', icon: 'fa-solid fa-arrow-up-right-dots', iconBg: 'bg-sky-100 text-sky-600' },
+          { year: '2026', count: 28, growthLabel: 'Naik +12% (Total +180%)', badgeClass: 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-xs', desc: 'Rekor tertinggi SMANJO', icon: 'fa-solid fa-trophy', iconBg: 'bg-amber-100 text-amber-600' }
+        ],
+
+        studentChampions: [
+          {
+            name: 'Cintya Qonita',
+            title: 'Cintya Qonita — Juara 1 Jurnalistik Tingkat Kabupaten',
+            achievement: 'Juara 1 Jurnalistik Tingkat Kabupaten',
+            medal: 'Juara 1',
+            level: 'Tingkat Kabupaten',
+            src: 'cintyaqonita.jpg',
+            icon: 'fa-solid fa-trophy',
+            badgeColor: 'bg-gradient-to-r from-amber-500 to-orange-500 text-white',
+            category: 'Hall of Fame • Jurnalistik',
+            ekskulTag: 'Jurnalistik & WIS TV',
+            desc: 'Membuktikan ketajaman pena dan karya jurnalistik terbaik hingga meraih podium tertinggi Juara 1 Jurnalistik Tingkat Kabupaten.',
+            highlights: ['Juara 1 Lomba Jurnalistik Kabupaten', 'Karya tulis unggulan SMAN 1 Wongsorejo']
+          },
+          {
+            name: 'Cintya Qonita & Amelia Putri Anggraini',
+            title: 'Cintya Qonita (Juara 1) & Amelia Putri Anggraini (Juara 2) — International Karate Championship (Kemenpora)',
+            achievement: 'Juara 1 & Juara 2 International Karate Championship (Kemenpora)',
+            medal: 'Juara 1 & 2 Internasional',
+            level: 'Internasional • Kemenpora',
+            src: 'karateinternasional.jpg',
+            icon: 'fa-solid fa-earth-asia',
+            badgeColor: 'bg-gradient-to-r from-amber-500 to-yellow-500 text-white',
+            category: 'Hall of Fame • Karate Internasional',
+            ekskulTag: 'Ekskul Bela Diri (Karate)',
+            desc: 'Prestasi membanggakan di kancah internasional! Cintya Qonita meraih Medali Emas (Juara 1) dan Amelia Putri Anggraini meraih Medali Perak (Juara 2) Piala Kemenpora RI.',
+            highlights: ['Cintya Qonita — Juara 1 Internasional (Kemenpora)', 'Amelia Putri Anggraini — Juara 2 Internasional (Kemenpora)', 'Mengharumkan nama Banyuwangi']
+          },
+          {
+            name: 'Moh. Wildan, Moh. Bayu, & Kenza',
+            title: 'Moh. Wildan, Moh. Bayu, & Kenza — 3 Pemain Voli Kejurprov',
+            achievement: '3 Pemain Tim Voli Kejurprov',
+            medal: 'Skuad Kejurprov',
+            level: 'Tingkat Provinsi',
+            src: 'volikejurprov.jpg',
+            icon: 'fa-solid fa-volleyball',
+            badgeColor: 'bg-gradient-to-r from-sky-500 to-blue-600 text-white',
+            category: 'Hall of Fame • Bola Voli',
+            ekskulTag: 'Ekskul Bola Voli',
+            desc: 'Tiga atlet bola voli kebanggaan SMAN 1 Wongsorejo yang terpilih berlaga di ajang Kejuaraan Provinsi (Kejurprov) Jawa Timur.',
+            highlights: ['3 Atlet Terpilih di Kejurprov Jatim', 'Lahir dari Ekskul Bola Voli SMANJO']
+          },
+          {
+            name: 'Andita Nafa Rezza Yana',
+            title: 'Andita Nafa Rezza Yana — Juara 1 Pencak Silat Tingkat Kabupaten',
+            achievement: 'Juara 1 Pencak Silat Tingkat Kabupaten',
+            medal: 'Juara 1',
+            level: 'Tingkat Kabupaten',
+            src: 'anditanafa.jpg',
+            icon: 'fa-solid fa-hand-fist',
+            badgeColor: 'bg-gradient-to-r from-amber-500 to-orange-500 text-white',
+            category: 'Hall of Fame • Pencak Silat',
+            ekskulTag: 'Ekskul Bela Diri',
+            desc: 'Tampil tangguh dan penuh ketangkasan hingga sukses menyabet Juara 1 Pencak Silat Tingkat Kabupaten.',
+            highlights: ['Peraih Medali Emas / Juara 1 Silat Kabupaten', 'Pendekar tangguh kebanggaan SMANJO']
+          },
+          {
+            name: 'Novita Herfina Putri',
+            title: 'Novita Herfina Putri — Juara 3 Voli Pantai Putri POPDA XV 2026',
+            achievement: 'Juara 3 Voli Pantai Putri POPDA XV 2026',
+            medal: 'Juara 3 POPDA XV',
+            level: 'POPDA XV 2026',
+            src: 'novitaherfina.jpg',
+            icon: 'fa-solid fa-medal',
+            badgeColor: 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white',
+            category: 'Hall of Fame • Voli Pantai',
+            ekskulTag: 'Ekskul Bola Voli',
+            desc: 'Menunjukkan daya juang luar biasa di atas pasir hingga sukses meraih Juara 3 Voli Pantai Putri pada ajang POPDA XV Tahun 2026.',
+            highlights: ['Peraih Medali Juara 3 Voli Pantai POPDA XV 2026', 'Atlet putri tangguh SMANJO']
+          }
+        ],
+
+        ekskulCategories: [
+          { id: 'all', label: 'Semua (11)', icon: 'fa-solid fa-layer-group' },
+          { id: 'olahraga', label: 'Olahraga & Bela Diri', icon: 'fa-solid fa-medal' },
+          { id: 'seni', label: 'Seni & Media', icon: 'fa-solid fa-clapperboard' },
+          { id: 'kepemimpinan', label: 'Kepemimpinan & Sains', icon: 'fa-solid fa-shield-halved' }
+        ],
+
+        extracurriculars: [
+          { title: 'Pramuka', src: 'pramuka.jpg', category: 'kepemimpinan', categoryLabel: 'Kepemimpinan', icon: 'fa-solid fa-campground', desc: 'Membangun kemandirian, ketangkasan, dan jiwa kepemimpinan.', highlights: ['Kemah Bakti', 'Survival'] },
+          { title: 'Tari', src: 'tari.jpg', category: 'seni', categoryLabel: 'Seni & Budaya', icon: 'fa-solid fa-masks-theater', desc: 'Melestarikan tari tradisional Banyuwangi dan kreasi modern.', highlights: ['Event Sekolah', 'Budaya Daerah'] },
+          { title: 'Bola Voli', src: 'bolavoli.jpg', category: 'olahraga', categoryLabel: 'Olahraga Prestasi', icon: 'fa-solid fa-volleyball', desc: 'Latihan teknik smash, block, dan rutin di turnamen pelajar.', highlights: ['Tim Putra & Putri', 'Turnamen Kabupaten'] },
+          { title: 'PMR', src: 'pmr.jpg', category: 'kepemimpinan', categoryLabel: 'Kesehatan & Sosial', icon: 'fa-solid fa-kit-medical', desc: 'Keterampilan pertolongan pertama dan aksi kemanusiaan.', highlights: ['Pertolongan Pertama', 'Tim Medis Sekolah'] },
+          { title: 'Sepak Bola dan Futsal', src: 'sepakbolafutsal.jpg', category: 'olahraga', categoryLabel: 'Olahraga Prestasi', icon: 'fa-solid fa-futbol', desc: 'Mengasah taktik lapangan hijau dan futsal bersama tim SMANJO.', highlights: ['Liga Pelajar', 'Futsal Antar-SMA'] },
+          { title: 'Bela Diri', src: 'beladiri.jpg', category: 'olahraga', categoryLabel: 'Olahraga', icon: 'fa-solid fa-hand-fist', desc: 'Ketangguhan fisik, fokus mental, dan disiplin bela diri.', highlights: ['Kejuaraan Daerah', 'Pertahanan Diri'] },
+          { title: 'Seni Musik', src: 'senimusik.jpg', category: 'seni', categoryLabel: 'Seni Musik', icon: 'fa-solid fa-guitar', desc: 'Grup band sekolah, akustik, paduan suara, dan aransemen lagu.', highlights: ['Pensi Sekolah', 'Festival Musik'] },
+          { title: 'WIS Tv', src: 'wistv.jpg', category: 'seni', categoryLabel: 'Broadcasting', icon: 'fa-solid fa-video', desc: 'Televisi sekolah: fotografi, sinematografi, podcast, dan berita.', highlights: ['Liputan Event', 'Film Pendek'] },
+          { title: 'PAPI', src: 'papi.jpg', category: 'kepemimpinan', categoryLabel: 'Kepemimpinan', icon: 'fa-solid fa-people-group', desc: 'Kaderisasi kepemimpinan, public speaking, dan advokasi remaja.', highlights: ['Public Speaking', 'Duta Pelajar'] },
+          { title: 'Paskibraka', src: 'paskibraka.jpg', category: 'kepemimpinan', categoryLabel: 'Disiplin', icon: 'fa-solid fa-person-military-pointing', desc: 'Pasukan pengibar bendera dengan disiplin dan formasi baris berbaris.', highlights: ['Upacara Bendera', 'LKBB'] },
+          { title: 'KIR', src: 'kir.jpg', category: 'kepemimpinan', categoryLabel: 'Sains & Riset', icon: 'fa-solid fa-flask-vial', desc: 'Peneliti muda yang bereksperimen dan mengikuti lomba karya tulis.', highlights: ['LKTI', 'Sains Inovatif'] }
+        ],
+
+        get filteredPPK() {
+          if (this.programTab === 'ppk-harian') return this.ppkPrograms.filter(i => i.group === 'ppk-harian');
+          if (this.programTab === 'ppk-jumat') return this.ppkPrograms.filter(i => i.group === 'ppk-jumat');
+          return this.ppkPrograms;
+        },
+
+        get filteredEkskul() {
+          if (this.ekskulFilter === 'all') return this.extracurriculars;
+          return this.extracurriculars.filter(e => e.category === this.ekskulFilter);
+        },
+
+        get allRequiredFiles() {
+          return [
+            { label: 'Logo Resmi SMAN 1 Wongsorejo', src: 'logosmanjo.jpg' },
+            { label: 'Background Slide 1 & 6: Gedung SMAN 1 Wongsorejo', src: 'sman1wongsorejo.jpg' },
+            { label: 'Foto Kepala Sekolah: Dr. Akhlakul Karimah, S.E., M.M.', src: 'kepalasekolah.jpg' },
+            { label: 'Budaya 5S (Senyum, Salam, Sapa, Sopan, Santun)', src: 'budaya5s.jpg' },
+            { label: 'Program Berselang (Bersih Sebelum Pulang)', src: 'berselang.jpg' },
+            { label: 'Kebijakan Pembatasan Gadget', src: 'pembatasangadget.jpg' },
+            { label: 'Prestasi Akademik Siswa (Umum)', src: 'prestasiakademik.jpg' },
+            { label: 'Prestasi Non-Akademik Siswa (Umum)', src: 'prestasinonakademik.jpg' },
+            { label: 'Juara 1 Jurnalistik Kabupaten: Cintya Qonita', src: 'cintyaqonita.jpg' },
+            { label: 'Juara 1 & 2 Karate Internasional (Kemenpora): Cintya & Amelia', src: 'karateinternasional.jpg' },
+            { label: '3 Pemain Voli Kejurprov: Wildan, Bayu, Kenza', src: 'volikejurprov.jpg' },
+            { label: 'Juara 1 Pencak Silat Kabupaten: Andita Nafa Rezza Yana', src: 'anditanafa.jpg' },
+            { label: 'Juara 3 Voli Pantai POPDA XV 2026: Novita Herfina', src: 'novitaherfina.jpg' },
+            { label: 'PPK: Asmaul Husna Bersama', src: 'asmaulhusna.jpg' },
+            { label: 'PPK: Doa Bersama', src: 'doabersama.jpg' },
+            { label: 'PPK: Menyanyikan Indonesia Raya', src: 'indonesiaraya.jpg' },
+            { label: "PPK: Jum'at Bersih", src: 'jumatbersih.jpg' },
+            { label: "PPK: Jum'at Taqwa", src: 'jumattaqwa.jpg' },
+            { label: "PPK: Jum'at Sehat", src: 'jumatsehat.jpg' },
+            { label: "PPK: Jum'at Bergizi", src: 'jumatbergizi.jpg' },
+            { label: 'Program SIKAP (Ketahanan Pangan)', src: 'sikap.jpg' },
+            { label: 'Gerakan Indonesia ASRI', src: 'indonesiaasri.jpg' },
+            { label: 'Program DT (Double Track)', src: 'doubletrack.jpg' },
+            { label: 'Ekskul: Pramuka', src: 'pramuka.jpg' },
+            { label: 'Ekskul: Tari', src: 'tari.jpg' },
+            { label: 'Ekskul: Bola Voli', src: 'bolavoli.jpg' },
+            { label: 'Ekskul: PMR', src: 'pmr.jpg' },
+            { label: 'Ekskul: Sepak Bola & Futsal', src: 'sepakbolafutsal.jpg' },
+            { label: 'Ekskul: Bela Diri', src: 'beladiri.jpg' },
+            { label: 'Ekskul: Seni Musik', src: 'senimusik.jpg' },
+            { label: 'Ekskul: WIS TV', src: 'wistv.jpg' },
+            { label: 'Ekskul: PAPI', src: 'papi.jpg' },
+            { label: 'Ekskul: Paskibraka', src: 'paskibraka.jpg' },
+            { label: 'Ekskul: KIR', src: 'kir.jpg' }
+          ];
+        },
+
+        goToSlide(idx) {
+          if (this.currentSlide === idx || this.isTransitioning) return;
+          this.isTransitioning = true;
+
+          setTimeout(() => {
+            this.currentSlide = idx;
+            const el = document.getElementById(this.sections[idx].id);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Otomatisasi musik saat masuk atau keluar dari slide kredit penutup
+            if (idx === 5) {
+              audioEngine.start();
+              this.isMusicPlaying = true;
+            } else {
+              audioEngine.stop();
+              this.isMusicPlaying = false;
+            }
+
+            setTimeout(() => {
+              this.isTransitioning = false;
+            }, 300);
+          }, 180);
+        },
+
+        nextSlide() {
+          if (this.currentSlide < this.sections.length - 1) {
+            this.goToSlide(this.currentSlide + 1);
+          }
+        },
+
+        prevSlide() {
+          if (this.currentSlide > 0) {
+            this.goToSlide(this.currentSlide - 1);
+          }
+        },
+
+        toggleMusic() {
+          if (this.isMusicPlaying) {
+            audioEngine.stop();
+            this.isMusicPlaying = false;
+          } else {
+            audioEngine.start();
+            this.isMusicPlaying = true;
+          }
+        },
+
+        switchProgramTab(tab) { this.programTab = tab; },
+        switchPrestasiTab(tab) { this.prestasiTab = tab; },
+        switchEkskulFilter(filterId) { this.ekskulFilter = filterId; },
+
+        togglePresentationMode() {
+          this.presentationMode = !this.presentationMode;
+          if (this.presentationMode && document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen().catch(() => {});
+          } else if (!this.presentationMode && document.fullscreenElement && document.exitFullscreen) {
+            document.exitFullscreen().catch(() => {});
+          }
+        },
+
+        openModal(item) { this.activeModal = item; },
+        closeAllModals() { this.activeModal = null; this.showChecklistModal = false; },
+
+        copyTextToClipboard(text) {
+          const t = document.createElement('textarea');
+          t.value = text;
+          document.body.appendChild(t);
+          t.select();
+          document.execCommand('copy');
+          document.body.removeChild(t);
+        },
+        copySingleFilename(f) { this.copyTextToClipboard(f); }
+      };
+    }
+  </script>
+</body>
+</html>
