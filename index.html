@@ -163,18 +163,9 @@
       0%, 15% { opacity: 0; transform: scaleY(0.6); transform-origin: bottom; }
       80%, 100% { opacity: 1; transform: scaleY(1); transform-origin: bottom; }
     }
-    @keyframes popNode1 {
-      0%, 12% { opacity: 0; transform: scale(0.3); }
-      25%, 100% { opacity: 1; transform: scale(1); }
-    }
-    @keyframes popNode2 {
-      0%, 45% { opacity: 0; transform: scale(0.3); }
-      60%, 100% { opacity: 1; transform: scale(1); }
-    }
-    @keyframes popNode3 {
-      0%, 75% { opacity: 0; transform: scale(0.3); }
-      88%, 100% { opacity: 1; transform: scale(1); }
-    }
+    @keyframes popNode1 { 0%, 12% { opacity: 0; transform: scale(0.3); } 25%, 100% { opacity: 1; transform: scale(1); } }
+    @keyframes popNode2 { 0%, 45% { opacity: 0; transform: scale(0.3); } 60%, 100% { opacity: 1; transform: scale(1); } }
+    @keyframes popNode3 { 0%, 75% { opacity: 0; transform: scale(0.3); } 88%, 100% { opacity: 1; transform: scale(1); } }
 
     .anim-chart-line {
       stroke-dasharray: 700;
@@ -188,7 +179,7 @@
     .anim-node-2 { transform-origin: 290px 48px; animation: popNode2 4.8s ease-out infinite; }
     .anim-node-3 { transform-origin: 520px 22px; animation: popNode3 4.8s ease-out infinite; }
 
-    /* ==================== CINEMATIC ROLLING CREDITS DENGAN BANNER AKHIR ==================== */
+    /* Cinematic Rolling Credits */
     .credits-container {
       height: 380px;
       overflow: hidden;
@@ -197,17 +188,10 @@
       -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
     }
 
-    /* Animasi gulir bergerak ke atas lalu berhenti tepat di banner akhir */
     @keyframes rollAndFinishCredits {
-      0% {
-        transform: translateY(380px);
-      }
-      78% {
-        transform: translateY(-840px);
-      }
-      84%, 100% {
-        transform: translateY(-900px);
-      }
+      0% { transform: translateY(380px); }
+      78% { transform: translateY(-840px); }
+      84%, 100% { transform: translateY(-900px); }
     }
 
     .credits-content {
@@ -217,7 +201,6 @@
       animation-play-state: paused;
     }
 
-    /* Shimmering Gradient Light Effect untuk Banner Akhir */
     @keyframes shimmerLight {
       0% { background-position: -200% center; }
       100% { background-position: 200% center; }
@@ -288,7 +271,7 @@
         <template x-for="(sec, idx) in sections" :key="sec.id">
           <button @click="goToSlide(idx)"
                   :class="currentSlide === idx ? 'bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold shadow-md shadow-sky-500/25' : 'text-slate-600 hover:text-slate-900 hover:bg-white/80 font-semibold'"
-                  class="px-3.5 py-2 rounded-xl text-xs transition flex items-center gap-1.5">
+                  class="px-3 py-2 rounded-xl text-xs transition flex items-center gap-1.5">
             <i :class="sec.icon"></i>
             <span x-text="sec.label"></span>
           </button>
@@ -340,6 +323,7 @@
             "Kenali Lebih Dekat Kampus SMANJO: Tempat Tumbuhnya Karakter, Karya, dan Prestasi"
           </p>
 
+          <!-- Infocard Ringkas Slide 1 (Bersih & Elegan) -->
           <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-2 max-w-xl">
             <div class="bg-white/85 backdrop-blur-md p-3.5 rounded-2xl text-center border border-white/80 shadow-lg">
               <p class="text-2xl sm:text-3xl font-extrabold bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-transparent">28 Siswa</p>
@@ -372,6 +356,7 @@
                  category: 'Kepala SMAN 1 Wongsorejo',
                  src: 'kepalasekolah.jpg',
                  desc: 'Selamat datang di SMAN 1 Wongsorejo! Kami menyambut hangat kunjungan adik-adik SMPN 1 Wongsorejo. Semoga kegiatan ini menjadi inspirasi terbaik bagi kalian untuk melanjutkan pendidikan di SMANJO.',
+                 detailStory: 'Di bawah kepemimpinan beliau, SMAN 1 Wongsorejo terus bertransformasi menjadi kampus yang unggul, berdaya saing global, dan berakar pada kearifan lokal. Sekolah berfokus tidak hanya pada pencapaian akademik yang mengantarkan puluhan siswa ke PTN favorit, namun juga pembinaan karakter religius, wawasan pelestarian lingkungan hidup, dan kesiapan vokasional kewirausahaan.',
                  highlights: ['Kepala SMAN 1 Wongsorejo', 'Visi Pendidikan Karakter & Digital', 'Pemimpin Inovasi Sekolah']
                })">
             <div class="relative w-36 h-44 sm:w-32 sm:h-40 rounded-2xl overflow-hidden bg-slate-900 shrink-0 border-2 border-amber-400 shadow-lg flex items-center justify-center">
@@ -405,7 +390,7 @@
               <span>BAGIAN 01 • STRUKTUR AKADEMIK & KURIKULUM</span>
             </div>
             <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Kurikulum Merdeka SMAN 1 Wongsorejo</h2>
-            <p class="text-slate-600 mt-2 max-w-3xl text-sm sm:text-base font-medium">Pembelajaran terintegrasi melalui 3 pilar utama: <strong>Intrakurikuler</strong> (pilihan minat bakat), <strong>Kokurikuler P5</strong>, dan <strong>Ekstrakurikuler</strong> pembentuk karakter juara.</p>
+            <p class="text-slate-600 mt-2 max-w-3xl text-sm sm:text-base font-medium">Pembelajaran terintegrasi melalui 3 pilar: <strong>Intrakurikuler</strong> (pilihan minat bakat), <strong>Kokurikuler</strong> (penguatan & pendalaman kompetensi 8 dimensi profil lulusan), dan <strong>Ekstrakurikuler</strong> pembentuk karakter juara.</p>
           </div>
 
           <!-- Switcher Tab Kurikulum -->
@@ -442,27 +427,36 @@
               </div>
               <span class="inline-block px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-sky-100 text-sky-800">Pilar 01</span>
               <h3 class="text-xl font-extrabold text-slate-900">Intrakurikuler</h3>
-              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">Pembelajaran mendalam yang berfokus pada materi esensial dan pengembangan kompetensi peserta didik sesuai fase perkembangannya.</p>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">Pembelajaran mendalam yang berfokus pada penguasaan materi esensial dan pengembangan kompetensi dasar siswa secara terstruktur.</p>
             </div>
             <ul class="space-y-2 text-xs font-semibold text-slate-700 bg-sky-50/60 p-3.5 rounded-2xl border border-sky-100">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-sky-500"></i><span>Fase E: Eksplorasi Minat Terpadu</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-sky-500"></i><span>Fase F: Pemilihan Mapel Sesuai Cita-cita PTN</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-sky-500"></i><span>Fase E (Kelas X): Fondasi Menyeluruh</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-sky-500"></i><span>Fase F (XI-XII): Mapel Pilihan Cita-cita PTN</span></li>
             </ul>
           </div>
 
           <div class="ambient-card p-6 sm:p-7 rounded-3xl space-y-4 border-t-4 border-t-amber-500 flex flex-col justify-between">
             <div class="space-y-3">
               <div class="w-12 h-12 rounded-2xl bg-amber-500/15 text-amber-600 flex items-center justify-center text-xl font-bold">
-                <i class="fa-solid fa-hands-holding-circle"></i>
+                <i class="fa-solid fa-compass-drafting"></i>
               </div>
               <span class="inline-block px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-amber-100 text-amber-800">Pilar 02</span>
-              <h3 class="text-xl font-extrabold text-slate-900">Kokurikuler (P5)</h3>
-              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">Projek Penguatan Profil Pelajar Pancasila untuk menumbuhkan karakter beriman, berkebhinekaan global, mandiri, gotong royong, bernalar kritis, dan kreatif.</p>
+              <h3 class="text-xl font-extrabold text-slate-900">Kokurikuler</h3>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">Pembelajaran untuk penguatan, pendalaman, dan pengayaan intrakurikuler guna mengembangkan karakter dan kompetensi siswa secara kontekstual.</p>
             </div>
-            <ul class="space-y-2 text-xs font-semibold text-slate-700 bg-amber-50/60 p-3.5 rounded-2xl border border-amber-100">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-amber-500"></i><span>Gaya Hidup Berkelanjutan & Ketahanan Pangan</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check-circle text-amber-500"></i><span>Kearifan Lokal & Kewirausahaan Mandiri</span></li>
-            </ul>
+            <div class="space-y-2 bg-amber-50/70 p-3.5 rounded-2xl border border-amber-200/80">
+              <p class="text-[11px] font-extrabold uppercase tracking-wider text-amber-900">Fokus 8 Dimensi Profil Lulusan:</p>
+              <div class="grid grid-cols-2 gap-1.5 text-[11px] font-semibold text-slate-700">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-amber-600 text-[10px]"></i> Beriman & Bertakwa</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-amber-600 text-[10px]"></i> Kewargaan Global</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-amber-600 text-[10px]"></i> Penalaran Kritis</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-amber-600 text-[10px]"></i> Kreativitas Nyata</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-amber-600 text-[10px]"></i> Kemandirian</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-amber-600 text-[10px]"></i> Kolaborasi Aktif</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-amber-600 text-[10px]"></i> Komunikasi Efektif</span>
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-check text-amber-600 text-[10px]"></i> Kesehatan Jasmani</span>
+              </div>
+            </div>
           </div>
 
           <div class="ambient-card p-6 sm:p-7 rounded-3xl space-y-4 border-t-4 border-t-emerald-500 flex flex-col justify-between">
@@ -504,47 +498,38 @@
                 <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-700 font-extrabold text-xs flex items-center justify-center shrink-0">1</span>
                 <div><p class="text-sm font-bold text-slate-900">Pendidikan Agama & Budi Pekerti</p><p class="text-[11px] text-slate-500 font-medium">Penguatan karakter spiritual</p></div>
               </div>
-
               <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition">
                 <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-700 font-extrabold text-xs flex items-center justify-center shrink-0">2</span>
                 <div><p class="text-sm font-bold text-slate-900">Pendidikan Pancasila</p><p class="text-[11px] text-slate-500 font-medium">Kewarganegaraan & Kebangsaan</p></div>
               </div>
-
               <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition">
                 <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-700 font-extrabold text-xs flex items-center justify-center shrink-0">3</span>
                 <div><p class="text-sm font-bold text-slate-900">Bahasa Indonesia</p><p class="text-[11px] text-slate-500 font-medium">Literasi & Komunikasi Efektif</p></div>
               </div>
-
               <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition">
                 <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-700 font-extrabold text-xs flex items-center justify-center shrink-0">4</span>
                 <div><p class="text-sm font-bold text-slate-900">Matematika</p><p class="text-[11px] text-slate-500 font-medium">Numerasi & Berpikir Kritis</p></div>
               </div>
-
               <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition">
                 <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-700 font-extrabold text-xs flex items-center justify-center shrink-0">5</span>
                 <div><p class="text-sm font-bold text-slate-900">Bahasa Inggris</p><p class="text-[11px] text-slate-500 font-medium">Komunikasi Global Modern</p></div>
               </div>
-
               <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition">
                 <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-700 font-extrabold text-xs flex items-center justify-center shrink-0">6</span>
                 <div><p class="text-sm font-bold text-slate-900">PJOK</p><p class="text-[11px] text-slate-500 font-medium">Jasmani, Olahraga & Kesehatan</p></div>
               </div>
-
               <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition">
                 <span class="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-700 font-extrabold text-xs flex items-center justify-center shrink-0">7</span>
                 <div><p class="text-sm font-bold text-slate-900">IPA Terpadu</p><p class="text-[11px] text-indigo-600 font-bold">Fisika, Kimia, & Biologi</p></div>
               </div>
-
               <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition">
                 <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-700 font-extrabold text-xs flex items-center justify-center shrink-0">8</span>
                 <div><p class="text-sm font-bold text-slate-900">IPS Terpadu</p><p class="text-[11px] text-amber-600 font-bold">Sejarah, Ekonomi, Sosiologi, Geografi</p></div>
               </div>
-
               <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition">
                 <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-700 font-extrabold text-xs flex items-center justify-center shrink-0">9</span>
                 <div><p class="text-sm font-bold text-slate-900">Informatika</p><p class="text-[11px] text-slate-500 font-medium">Komputasional & Digital Skilling</p></div>
               </div>
-
               <div class="p-4 rounded-2xl bg-white border border-slate-200 flex items-center gap-3.5 shadow-xs hover:border-sky-400 transition sm:col-span-2 lg:col-span-1">
                 <span class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 font-extrabold text-xs flex items-center justify-center shrink-0">10</span>
                 <div><p class="text-sm font-bold text-slate-900">PKWU & Mulok Kerajinan</p><p class="text-[11px] text-emerald-600 font-bold">Kewirausahaan & Seni Kerajinan Khas</p></div>
@@ -569,7 +554,6 @@
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Rumpun 1 -->
             <div class="ambient-card p-6 sm:p-7 rounded-3xl space-y-5 border-2 border-sky-300">
               <div class="flex items-center justify-between">
                 <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-sky-100 text-sky-800 border border-sky-300">Kombinasi Pilihan Rumpun 1 (XI.2,2)</span>
@@ -590,7 +574,6 @@
               </div>
             </div>
 
-            <!-- Rumpun 2 -->
             <div class="ambient-card p-6 sm:p-7 rounded-3xl space-y-5 border-2 border-amber-300">
               <div class="flex items-center justify-between">
                 <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-amber-100 text-amber-800 border border-amber-300">Kombinasi Pilihan Rumpun 2 (XI.2,3)</span>
@@ -629,7 +612,6 @@
             <p class="text-slate-600 mt-2 max-w-2xl text-sm sm:text-base font-medium">Pembiasaan karakter melalui PPK, Budaya 5S, Berselang, Pembatasan Gadget, Jum'at Bergizi, Ketahanan Pangan (SIKAP), hingga SMA Double Track.</p>
           </div>
           
-          <!-- Animated Tab Switcher Program -->
           <div class="flex flex-wrap gap-1.5 bg-white/80 p-1.5 rounded-2xl border border-white shadow-md self-start backdrop-blur-md">
             <button @click="switchProgramTab('all')"
                     :class="programTab === 'all' ? 'bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold shadow-md shadow-sky-500/25' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 font-semibold'"
@@ -659,7 +641,7 @@
           </div>
         </div>
 
-        <!-- 1. SUB-SECTION: BUDAYA POSITIF & DISIPLIN (DENGAN FOTO) -->
+        <!-- 1. SUB-SECTION: BUDAYA POSITIF & DISIPLIN -->
         <div x-show="programTab === 'all' || programTab === 'budaya-disiplin'"
              x-transition:enter="transition ease-out duration-300"
              x-transition:enter-start="opacity-0 translate-y-3"
@@ -675,7 +657,7 @@
                 <p class="text-xs text-slate-500 font-medium">Pembiasaan tata krama 5S, peduli kelas Berselang, dan fokus belajar tanpa distraksi gadget</p>
               </div>
             </div>
-            <span class="text-xs font-semibold text-indigo-700 bg-indigo-50 px-3 py-1.5 rounded-lg border border-indigo-200">Klik kartu untuk foto penuh</span>
+            <span class="text-xs font-semibold text-indigo-700 bg-indigo-50 px-3 py-1.5 rounded-lg border border-indigo-200">Klik kartu untuk foto penuh & narasi</span>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -706,8 +688,8 @@
                       </template>
                     </div>
                     <div class="pt-2 border-t border-slate-200/80 flex items-center justify-between text-xs font-bold text-indigo-600">
-                      <span>Lihat Dokumentasi</span>
-                      <i class="fa-solid fa-expand"></i>
+                      <span>Buka Narasi Lengkap</span>
+                      <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </div>
                   </div>
                 </div>
@@ -732,7 +714,7 @@
                 <p class="text-xs text-slate-500 font-medium">Asmaul Husna, Doa, Indonesia Raya, Jum'at Taqwa, Sehat, Bergizi, & Bersih</p>
               </div>
             </div>
-            <span class="text-xs font-semibold text-sky-700 bg-sky-100 px-3 py-1.5 rounded-lg border border-sky-200">Klik kartu untuk foto penuh</span>
+            <span class="text-xs font-semibold text-sky-700 bg-sky-100 px-3 py-1.5 rounded-lg border border-sky-200">Klik kartu untuk foto penuh & narasi</span>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -758,8 +740,8 @@
                     <p class="text-sm text-slate-600 mt-1.5 leading-relaxed font-medium" x-text="item.desc"></p>
                   </div>
                   <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs font-bold text-sky-600">
-                    <span>Lihat Dokumentasi</span>
-                    <i class="fa-solid fa-expand"></i>
+                    <span>Buka Narasi Lengkap</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
                   </div>
                 </div>
               </div>
@@ -1042,7 +1024,7 @@
                     </ul>
                   </div>
                   <div class="flex items-center justify-between text-xs font-bold text-amber-600 pt-1">
-                    <span>Klik untuk melihat detail</span>
+                    <span>Buka Narasi & Foto Lengkap</span>
                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                   </div>
                 </div>
@@ -1090,11 +1072,11 @@
                   <div>
                     <h4 class="text-lg font-extrabold text-slate-900 group-hover:text-amber-700 transition leading-snug" x-text="champ.name"></h4>
                     <p class="text-xs font-bold text-amber-700 mt-1" x-text="champ.achievement"></p>
-                    <p class="text-xs text-slate-600 mt-2.5 leading-relaxed font-medium" x-text="champ.desc"></p>
+                    <p class="text-xs text-slate-600 mt-2.5 leading-relaxed font-medium line-clamp-2" x-text="champ.desc"></p>
                   </div>
                   <div class="pt-3 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-amber-700">
                     <span x-text="champ.ekskulTag"></span>
-                    <i class="fa-solid fa-expand"></i>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
                   </div>
                 </div>
               </div>
@@ -1150,7 +1132,7 @@
                   <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed line-clamp-3 font-medium" x-text="eks.desc"></p>
                 </div>
                 <div class="pt-3 border-t border-slate-200 flex items-center justify-between text-xs font-bold text-sky-600">
-                  <span>Lihat Profil & Foto</span>
+                  <span>Lihat Profil & Narasi Lengkap</span>
                   <i class="fa-solid fa-circle-chevron-right"></i>
                 </div>
               </div>
@@ -1162,7 +1144,6 @@
 
     <!-- ==================== 6. SLIDE PENUTUP & KREDIT FILM ==================== -->
     <section id="slide-credits" class="relative py-16 lg:py-24 px-4 sm:px-6 lg:px-8 border-b border-white/60 overflow-hidden">
-      <!-- Background Image Gedung Sekolah SMANJO Sama Seperti Slide 1 -->
       <div class="absolute inset-0 z-0">
         <img src="sman1wongsorejo.jpg"
              alt="Background Gedung SMAN 1 Wongsorejo"
@@ -1212,10 +1193,10 @@
                 </p>
               </div>
 
-              <!-- Block 2: Kurikulum Merdeka -->
+              <!-- Block 2: Kurikulum Merdeka Terkini -->
               <div class="space-y-2">
                 <p class="text-xs uppercase tracking-widest text-indigo-400 font-extrabold">— KURIKULUM MERDEKA —</p>
-                <p class="text-sm text-slate-200">Intrakurikuler Minat Bakat • Projek Kokurikuler P5 • 11 Ekstrakurikuler Pilihan</p>
+                <p class="text-sm text-slate-200">Intrakurikuler Minat Bakat • Kokurikuler Karakter & Kompetensi (8 Dimensi Profil Lulusan) • 11 Ekstrakurikuler Pilihan</p>
               </div>
 
               <!-- Block 3: Deretan Sang Juara -->
@@ -1248,7 +1229,7 @@
                 <p class="text-xs text-slate-400">© 2026 SMANJO • All Rights Reserved</p>
               </div>
 
-              <!-- ==================== BANNER AKHIR: MARI BERGABUNG BERSAMA SMANJO #SMANJOPANGGAHTATAG ==================== -->
+              <!-- BANNER AKHIR: MARI BERGABUNG BERSAMA SMANJO #SMANJOPANGGAHTATAG -->
               <div class="pt-24 pb-8 flex flex-col items-center justify-center min-h-[300px] space-y-4">
                 <div class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-sky-500/20 border border-sky-400/40 text-sky-300 text-xs font-bold uppercase tracking-widest">
                   <i class="fa-solid fa-graduation-cap"></i>
@@ -1301,11 +1282,12 @@
     </div>
   </footer>
 
-  <!-- ==================== MODAL 1: LIGHTBOX DETAIL ==================== -->
+  <!-- ==================== MODAL LIGHTBOX DETAIL (LENGKAP DENGAN NARASI MENDALAM) ==================== -->
   <div x-show="activeModal" x-cloak x-transition.opacity class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto" @click.self="activeModal = null">
     <div x-show="activeModal" x-transition.scale class="bg-white border border-slate-200 rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl my-8">
       <template x-if="activeModal">
         <div>
+          <!-- Header Visual Foto -->
           <div class="relative h-72 sm:h-96 w-full bg-slate-900 flex items-center justify-center p-4">
             <img :src="activeModal.src" :alt="activeModal.title"
                  @load="window.markImageStatus(activeModal.src, true)"
@@ -1315,23 +1297,42 @@
               <i class="fa-solid fa-xmark text-lg"></i>
             </button>
           </div>
+
+          <!-- Narasi & Detail Konten Pop-up -->
           <div class="p-6 sm:p-8 space-y-4">
-            <span class="px-3 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-800 border border-sky-300" x-text="activeModal.category || activeModal.categoryLabel || 'Dokumentasi SMANJO'"></span>
-            <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900" x-text="activeModal.title"></h3>
-            <p class="text-slate-600 text-sm sm:text-base leading-relaxed font-medium" x-text="activeModal.desc"></p>
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-sky-100 text-sky-800 border border-sky-300" x-text="activeModal.category || activeModal.categoryLabel || 'Dokumentasi SMANJO'"></span>
+              <span class="text-xs text-slate-400 font-semibold">• SMAN 1 Wongsorejo</span>
+            </div>
+
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-snug" x-text="activeModal.title"></h3>
+            
+            <!-- Ringkasan Singkat -->
+            <p class="text-slate-700 text-sm sm:text-base font-semibold leading-relaxed border-l-4 border-sky-500 pl-3 py-0.5 bg-sky-50/50 rounded-r-xl" x-text="activeModal.desc"></p>
+            
+            <!-- Narasi Lengkap & Mendalam Mengenai Kegiatan -->
+            <template x-if="activeModal.detailStory">
+              <div class="space-y-2 pt-1">
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-500">Mengenal Lebih Dekat Kegiatan Ini:</p>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-medium bg-slate-50 p-4 rounded-2xl border border-slate-200" x-text="activeModal.detailStory"></p>
+              </div>
+            </template>
+
+            <!-- Poin Unggulan / Sorotan Capaian -->
             <template x-if="activeModal.highlights && activeModal.highlights.length">
-              <div class="pt-3">
-                <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Poin Unggulan:</p>
+              <div class="pt-2">
+                <p class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Nilai Karakter & Capaian:</p>
                 <div class="flex flex-wrap gap-2">
                   <template x-for="h in activeModal.highlights" :key="h">
-                    <span class="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-800 text-xs font-semibold border border-slate-200">
-                      <i class="fa-solid fa-circle-check mr-1 text-emerald-600"></i>
+                    <span class="px-3 py-1.5 rounded-xl bg-slate-100 text-slate-800 text-xs font-semibold border border-slate-200 flex items-center gap-1.5">
+                      <i class="fa-solid fa-circle-check text-emerald-600 text-[11px]"></i>
                       <span x-text="h"></span>
                     </span>
                   </template>
                 </div>
               </div>
             </template>
+
             <div class="pt-4 border-t border-slate-200 flex justify-end">
               <button @click="activeModal = null" class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition">Tutup</button>
             </div>
@@ -1348,7 +1349,7 @@
         <div>
           <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300">PANDUAN FOLDER PANITIA (35 FILE FOTO)</span>
           <h3 class="text-2xl font-extrabold text-slate-900 mt-2">Daftar File Foto (.JPEG / .jpg)</h3>
-          <p class="text-xs sm:text-sm text-slate-600 mt-1">Sistem otomatis mendeteksi ekstensi huruf besar <strong class="text-amber-700">.JPEG</strong> maupun <strong class="text-amber-700">.jpg</strong>:</p>
+          <p class="text-xs sm:text-sm text-slate-600 mt-1">Sistem otomatis mendeteksi format gambar di satu folder:</p>
         </div>
         <button @click="showChecklistModal = false" class="w-10 h-10 rounded-full bg-slate-200 hover:bg-rose-500 hover:text-white text-slate-700 flex items-center justify-center shrink-0 transition">
           <i class="fa-solid fa-xmark"></i>
@@ -1374,21 +1375,12 @@
     </div>
   </div>
 
-  <!-- ==================== SCRIPTS & SYNTHESIZER MUSIC ENGINE ==================== -->
+  <!-- ==================== SCRIPTS ==================== -->
   <script>
     window.imageStatuses = {};
     window.markImageStatus = function(filename, loaded) { window.imageStatuses[filename] = loaded; };
 
     window.tryAlternativeFormats = function(imgEl, filename, titleText) {
-      const currentSrc = imgEl.src;
-      if (currentSrc.endsWith('.jpg') || currentSrc.endsWith('.JPG')) {
-        imgEl.src = filename.replace(/\.(jpg|JPG)$/, '.JPEG');
-        return;
-      } else if (currentSrc.endsWith('.JPEG')) {
-        imgEl.src = filename.replace(/\.JPEG$/, '.jpeg');
-        return;
-      }
-
       imgEl.onerror = null;
       window.markImageStatus(filename, false);
       const safeTitle = (titleText || 'Kegiatan SMANJO').replace(/["&<>]/g, '');
@@ -1407,20 +1399,19 @@
         <text x="400" y="195" text-anchor="middle" fill="#38bdf8" font-family="Plus Jakarta Sans, sans-serif" font-size="22" font-weight="700">DOKUMENTASI SMAN 1 WONGSOREJO</text>
         <text x="400" y="245" text-anchor="middle" fill="#ffffff" font-family="Plus Jakarta Sans, sans-serif" font-size="32" font-weight="800">${safeTitle}</text>
         <rect x="180" y="285" width="440" height="54" rx="14" fill="#f59e0b" fill-opacity="0.18" stroke="#f59e0b" stroke-width="1.5"/>
-        <text x="400" y="319" text-anchor="middle" fill="#fcd34d" font-family="monospace" font-size="19" font-weight="700">Siapkan file: ${filename} (.JPEG)</text>
+        <text x="400" y="319" text-anchor="middle" fill="#fcd34d" font-family="monospace" font-size="19" font-weight="700">Siapkan file: ${filename}</text>
         <text x="400" y="385" text-anchor="middle" fill="#94a3b8" font-family="Plus Jakarta Sans, sans-serif" font-size="16">Taruh foto di satu folder dengan file HTML ini</text>
       </svg>`;
       imgEl.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
     };
 
-    /* Web Audio API: Cinematic Ambient Arpeggio Engine */
+    /* Web Audio API Synthesizer */
     class CinematicCreditsAudio {
       constructor() {
         this.ctx = null;
         this.isPlaying = false;
         this.step = 0;
         this.timer = null;
-        // Tangga nada emosional inspiratif: D Mayor Pentatonic & Ninth Chords
         this.notes = [293.66, 369.99, 440.00, 554.37, 587.33, 739.99, 880.00, 659.25, 440.00, 369.99];
       }
 
@@ -1442,7 +1433,6 @@
         osc.type = 'sine';
         osc.frequency.setValueAtTime(freq, time);
 
-        // Subtly detuned warm second oscillator for lush pad feel
         const osc2 = this.ctx.createOscillator();
         const gain2 = this.ctx.createGain();
         osc2.type = 'triangle';
@@ -1478,9 +1468,8 @@
           const freq = this.notes[this.step % this.notes.length];
           this.playTone(freq, now, 1.8);
 
-          // Sesekali berikan aksen bas megah
           if (this.step % 4 === 0) {
-            this.playTone(146.83, now, 2.8); // D3 Warm Bass
+            this.playTone(146.83, now, 2.8);
           }
 
           this.step++;
@@ -1522,6 +1511,7 @@
           { id: 'slide-credits', label: 'Penutup & Kredit', icon: 'fa-solid fa-film' }
         ],
 
+        // BUDAYA SEKOLAH (DILENGKAPI NARASI DETAIL KEGIATAN)
         budayaPrograms: [
           {
             title: 'Budaya 5S (Senyum, Salam, Sapa, Sopan, Santun)',
@@ -1530,6 +1520,7 @@
             category: 'Pembiasaan Karakter Ramah',
             icon: 'fa-solid fa-face-smile',
             desc: 'Pembiasaan ramah, salam hormat kepada bapak/ibu guru dan sapaan hangat antar-teman di gerbang sekolah setiap pagi.',
+            detailStory: 'Setiap pagi sebelum bel masuk berbunyi, Bapak/Ibu Guru menyambut kedatangan seluruh siswa di gerbang depan dengan senyuman hangat dan salam persaudaraan. Budaya 5S bukan sekadar formalitas, melainkan pondasi pembentukan adab, etika pergaulan, dan rasa saling menghargai. Di SMANJO, iklim belajar yang santun dan penuh kekeluargaan membuat setiap siswa merasa aman, dihargai, dan betah berada di sekolah.',
             highlights: ['Senyum & Salam di Gerbang Pagi', 'Sopan Santun Antar-Warga Sekolah', 'Keluarga Ramah SMANJO']
           },
           {
@@ -1538,7 +1529,8 @@
             badge: 'Kebersihan & Peduli Kelas',
             category: 'Tanggung Jawab Lingkungan',
             icon: 'fa-solid fa-broom-ball',
-            desc: 'Aksi gotong royong merapikan kelas dan memungut sampah 10 menit sebelum bel kepulangan berbunyi agar kelas siap digunakan esok hari.',
+            desc: 'Aksi gotong royong merapikan kelas dan memungut sampah 10 menit sebelum bel kepulangan berbunyi.',
+            detailStory: 'Sepuluh menit sebelum jam pelajaran terakhir berakhir, seluruh siswa secara serentak menghentikan aktivitas untuk melakukan operasi semut di ruang kelas dan lorong masing-masing. Meja kursi dirapikan, papan tulis dibersihkan, dan tidak boleh ada sampah yang tertinggal di laci. Melalui Berselang, siswa dididik memiliki rasa tanggung jawab terhadap fasilitas umum sehingga kelas selalu segar dan siap menyambut pembelajaran esok hari.',
             highlights: ['Ruang Kelas Bersih Sebelum Pulang', 'Tanggung Jawab Bersama', 'Suasana Belajar Nyaman & Asri']
           },
           {
@@ -1548,26 +1540,127 @@
             category: 'Disiplin Digital Siswa',
             icon: 'fa-solid fa-mobile-screen-button',
             desc: 'Penggunaan smartphone dikelola secara terarah di loker/tas kelas dan hanya dibuka saat instruksi pembelajaran digital guru.',
+            detailStory: 'Untuk mengembalikan daya konsentrasi belajar dan mempererat komunikasi tatap muka antar-teman, siswa meletakkan smartphone mereka di tempat penyimpanan khusus saat jam belajar berlangsung. Gawai hanya digunakan ketika guru memberikan instruksi pembelajaran berbasis digital, kuis interaktif, atau penelusuran literasi daring. Hal ini terbukti efektif menghindarkan siswa dari distraksi media sosial dan meningkatkan pemahaman materi pelajaran.',
             highlights: ['Fokus Penuh Selama Pembelajaran', 'Meningkatkan Interaksi Sosial Nyata', 'Literasi & Detoks Digital Sehat']
           }
         ],
 
+        // PROGRAM PPK (DILENGKAPI NARASI DETAIL KEGIATAN)
         ppkPrograms: [
-          { title: 'Asmaul Husna Bersama', src: 'asmaulhusna.jpg', group: 'ppk-harian', badge: 'PPK Pagi Harian', category: 'Pembiasaan Karakter Religius', icon: 'fa-solid fa-hands-praying', desc: 'Mengawali pagi di SMAN 1 Wongsorejo dengan lantunan Asmaul Husna secara berjamaah.', highlights: ['Dilaksanakan Sebelum Jam Pelajaran', 'Karakter Religius'] },
-          { title: 'Doa Bersama', src: 'doabersama.jpg', group: 'ppk-harian', badge: 'PPK Pagi Harian', category: 'Pembiasaan Spiritual', icon: 'fa-solid fa-book-quran', desc: 'Budaya berdoa bersama sebelum dan sesudah kegiatan belajar mengajar.', highlights: ['Dipimpin Siswa Bergantian', 'Keberkahan Ilmu'] },
-          { title: 'Menyanyikan Indonesia Raya', src: 'indonesiaraya.jpg', group: 'ppk-harian', badge: 'PPK Pagi Harian', category: 'Pembiasaan Nasionalisme', icon: 'fa-solid fa-flag', desc: 'Menumbuhkan semangat cinta tanah air dan jiwa patriotisme seluruh siswa.', highlights: ['Sikap Sempurna & Khidmat', 'Cinta Tanah Air'] },
-          { title: "Jum'at Bersih", src: 'jumatbersih.jpg', group: 'ppk-jumat', badge: "Program Hari Jum'at", category: 'Peduli Lingkungan', icon: 'fa-solid fa-broom', desc: 'Aksi gotong royong membersihkan kelas, taman, dan lingkungan sekolah.', highlights: ['Kerja Bakti Taman', 'Gerakan Indonesia ASRI'] },
-          { title: "Jum'at Taqwa", src: 'jumattaqwa.jpg', group: 'ppk-jumat', badge: "Program Hari Jum'at", category: 'Pembinaan Rohani', icon: 'fa-solid fa-mosque', desc: 'Kajian keagamaan, istighosah, dan tausiyah untuk memperkokoh iman remaja.', highlights: ['Kajian Remaja & Istighosah', 'Akhlak Mulia'] },
-          { title: "Jum'at Sehat", src: 'jumatsehat.jpg', group: 'ppk-jumat', badge: "Program Hari Jum'at", category: 'Kebugaran Jasmani', icon: 'fa-solid fa-heart-circle-bolt', desc: 'Senam bersama dan menjaga kebugaran jasmani warga sekolah.', highlights: ['Senam Bugar Bersama', 'Kesehatan Remaja'] },
-          { title: "Jum'at Bergizi", src: 'jumatbergizi.jpg', group: 'ppk-jumat', badge: "Program Hari Jum'at", category: 'Gizi Sehat & Bugar', icon: 'fa-solid fa-apple-whole', desc: 'Pembiasaan sarapan sehat bersama dengan menu bergizi seimbang untuk mendukung konsentrasi belajar siswa.', highlights: ['Sarapan Sehat Bersama', 'Nutrisi Tumbuh Remaja'] }
+          { 
+            title: 'Asmaul Husna Bersama', 
+            src: 'asmaulhusna.jpg', 
+            group: 'ppk-harian', 
+            badge: 'PPK Pagi Harian', 
+            category: 'Pembiasaan Karakter Religius', 
+            icon: 'fa-solid fa-hands-praying', 
+            desc: 'Mengawali pagi di SMAN 1 Wongsorejo dengan lantunan Asmaul Husna secara berjamaah.', 
+            detailStory: 'Setiap pukul 06.45 WIB, suasana sekolah menjadi sangat syahdu ketika lantunan 99 Nama Allah (Asmaul Husna) berkumandang serempak di seluruh penjuru ruang kelas melalui sistem pengeras suara terpusat. Siswa melantunkannya dengan khusyuk dengan panduan guru. Pembiasaan pagi ini bertujuan menenangkan hati, menanamkan rasa syukur, dan memohon kelancaran ilmu sebelum memulai materi pelajaran.',
+            highlights: ['Dilaksanakan Sebelum Jam Pelajaran', 'Menyejukkan Suasana Hati', 'Karakter Religius Kokoh'] 
+          },
+          { 
+            title: 'Doa Bersama', 
+            src: 'doabersama.jpg', 
+            group: 'ppk-harian', 
+            badge: 'PPK Pagi Harian', 
+            category: 'Pembiasaan Spiritual', 
+            icon: 'fa-solid fa-book-quran', 
+            desc: 'Budaya berdoa bersama sebelum dan sesudah kegiatan belajar mengajar.', 
+            detailStory: 'Pendidikan di SMANJO menempatkan nilai spiritual sebagai landasan keberkahan ilmu. Setiap awal dan akhir proses belajar, ketua kelas atau pengurus bergantian memimpin doa bersama dengan khidmat sesuai keyakinan masing-masing. Aktivitas ini membangun kerendahan hati bahwa setiap keberhasilan prestasi akademik dan bakat senantiasa bersumber dari ridha Tuhan Yang Maha Esa.',
+            highlights: ['Dipimpin Siswa Bergantian', 'Melatih Kepemimpinan', 'Keberkahan & Ketenteraman Belajar'] 
+          },
+          { 
+            title: 'Menyanyikan Indonesia Raya', 
+            src: 'indonesiaraya.jpg', 
+            group: 'ppk-harian', 
+            badge: 'PPK Pagi Harian', 
+            category: 'Pembiasaan Nasionalisme', 
+            icon: 'fa-solid fa-flag', 
+            desc: 'Menumbuhkan semangat cinta tanah air dan jiwa patriotisme seluruh siswa.', 
+            detailStory: 'Tepat pada jam pelajaran pertama, seluruh warga sekolah berdiri tegak dalam sikap sempurna menyanyikan lagu kebangsaan Indonesia Raya secara khidmat. Pembiasaan ini ditujukan untuk memupuk jiwa patriotisme, menjaga kesadaran berbangsa di kalangan remaja, serta meneguhkan identitas Profil Pelajar Pancasila yang bangga terhadap tanah air Indonesia.',
+            highlights: ['Sikap Sempurna & Khidmat', 'Menghormati Jasa Pahlawan', 'Cinta Tanah Air & Bangsa'] 
+          },
+          { 
+            title: "Jum'at Bersih", 
+            src: 'jumatbersih.jpg', 
+            group: 'ppk-jumat', 
+            badge: "Program Hari Jum'at", 
+            category: 'Peduli Lingkungan', 
+            icon: 'fa-solid fa-broom', 
+            desc: 'Aksi gotong royong membersihkan kelas, taman, dan lingkungan sekolah.', 
+            detailStory: 'Pada jadwal Jum\'at Bersih, seluruh guru, staf, dan siswa berkolaborasi membersihkan area sekolah, merawat taman hijau, menyiram tanaman kebun produktif, serta memilah sampah organik dan anorganik. Program ini memupuk jiwa gotong royong dan kesadaran ekologis nyata, menciptakan lingkungan belajar SMANJO yang asri, hijau, teduh, dan bebas dari sampah plastik.',
+            highlights: ['Kerja Bakti Taman & Kelas', 'Pemilahan Sampah Ramah Lingkungan', 'Gerakan Indonesia ASRI'] 
+          },
+          { 
+            title: "Jum'at Taqwa", 
+            src: 'jumattaqwa.jpg', 
+            group: 'ppk-jumat', 
+            badge: "Program Hari Jum'at", 
+            category: 'Pembinaan Rohani', 
+            icon: 'fa-solid fa-mosque', 
+            desc: 'Kajian keagamaan, istighosah, dan tausiyah untuk memperkokoh iman remaja.', 
+            detailStory: 'Bertempat di Masjid/Aula sekolah, kegiatan Jum\'at Taqwa diisi dengan sholat dhuha berjamaah, pembacaan surat Yasin, istighosah bersama, dan tausiyah motivasi remaja yang dibawakan oleh guru agama maupun ustadz tamu. Sementara bagi siswa non-muslim, dilaksanakan kebaktian dan pendalaman rohani di ruang tersendiri. Program ini menjadi oase penyejuk mental siswa di tengah kesibukan belajar.',
+            highlights: ['Kajian Remaja & Istighosah', 'Sholat Dhuha Berjamaah', 'Penguatan Mental & Akhlak Mulia'] 
+          },
+          { 
+            title: "Jum'at Sehat", 
+            src: 'jumatsehat.jpg', 
+            group: 'ppk-jumat', 
+            badge: "Program Hari Jum'at", 
+            category: 'Kebugaran Jasmani', 
+            icon: 'fa-solid fa-heart-circle-bolt', 
+            desc: 'Senam bersama dan menjaga kebugaran jasmani warga sekolah.', 
+            detailStory: 'Dentuman musik senam energetik mengawali pagi Jum\'at di lapangan utama SMANJO. Diikuti oleh ratusan siswa bersama bapak/ibu guru dengan instruktur terlatih, kegiatan senam kesegaran jasmani dan aerobik ini berlangsung penuh keceriaan. Selain membakar kalori dan meningkatkan daya tahan tubuh, senam sehat menjadi ajang kebersamaan yang sangat dicintai siswa untuk melepas penat.',
+            highlights: ['Senam Bugar Bersama', 'Instruktur Musik Energetik', 'Kebugaran Tubuh & Imunitas Prima'] 
+          },
+          { 
+            title: "Jum'at Bergizi", 
+            src: 'jumatbergizi.jpg', 
+            group: 'ppk-jumat', 
+            badge: "Program Hari Jum'at", 
+            category: 'Gizi Sehat & Bugar', 
+            icon: 'fa-solid fa-apple-whole', 
+            desc: 'Pembiasaan sarapan sehat bersama dengan menu bergizi seimbang untuk mendukung konsentrasi belajar siswa.', 
+            detailStory: 'Siswa diajak membawa bekal makanan bergizi dari rumah yang memenuhi standar 4 sehat 5 sempurna (karbohidrat, sayur, lauk protein, dan buah). Bersama teman sekelas di selasar atau taman sekolah, siswa sarapan bersama sambil diedukasi mengenai pentingnya nutrisi seimbang untuk daya ingat, pencegahan anemia, dan kebugaran tubuh remaja dalam menyerap materi pelajaran secara optimal.',
+            highlights: ['Sarapan Bersama Menu Sehat', 'Edukasi Gizi Seimbang Remaja', 'Meningkatkan Fokus & Konsentrasi'] 
+          }
         ],
 
+        // INOVASI & PROGRAM UTAMA
         mainPrograms: [
-          { title: 'Program SIKAP (Ketahanan Pangan)', src: 'sikap.jpg', badge: 'Inovasi Ketahanan Pangan', category: 'Program Unggulan', icon: 'fa-solid fa-wheat-awn', desc: 'Inovasi pemanfaatan lahan sekolah melalui budidaya tanaman pangan dan agrikultur.', highlights: ['Kebun Produktif', 'Kemandirian Pangan'] },
-          { title: 'Gerakan Indonesia ASRI', src: 'indonesiaasri.jpg', badge: 'Aman • Sehat • Rindang • Indah', category: 'Wawasan Lingkungan', icon: 'fa-solid fa-tree', desc: 'Komitmen menciptakan ekosistem sekolah hijau, rindang, dan asri.', highlights: ['Kampus Hijau', 'Zona Nyaman'] },
-          { title: 'Program DT (Double Track)', src: 'doubletrack.jpg', badge: 'Vokasi & Wirausaha Mandiri', category: 'Unggulan Jatim', icon: 'fa-solid fa-briefcase', desc: 'Ijazah SMA plus sertifikat keterampilan kerja & kewirausahaan mandiri.', highlights: ['Siap Kuliah & Kerja', 'Produk Vokasi'] }
+          { 
+            title: 'Program SIKAP (Ketahanan Pangan)', 
+            src: 'sikap.jpg', 
+            badge: 'Inovasi Ketahanan Pangan', 
+            category: 'Program Unggulan', 
+            icon: 'fa-solid fa-wheat-awn', 
+            desc: 'Inovasi pemanfaatan lahan sekolah melalui budidaya tanaman pangan dan agrikultur.', 
+            detailStory: 'Program SIKAP (Sekolah Inovatif Ketahanan Pangan) mengubah lahan kosong di sekitar sekolah menjadi kebun sayur produktif, green house, dan budidaya tanaman pangan lokal. Siswa terjun langsung mempraktikkan bioteknologi sederhana, pembuatan pupuk organik kompos, dan teknik hidroponik. Hasil panen sayur segar dibagikan dan diolah kembali oleh siswa, menumbuhkan kemandirian pangan nyata sejak dini.',
+            highlights: ['Kebun Sayur & Tanaman Pangan', 'Praktik Pupuk Organik Mandiri', 'Kemandirian & Ketahanan Pangan'] 
+          },
+          { 
+            title: 'Gerakan Indonesia ASRI', 
+            src: 'indonesiaasri.jpg', 
+            badge: 'Aman • Sehat • Rindang • Indah', 
+            category: 'Wawasan Lingkungan', 
+            icon: 'fa-solid fa-tree', 
+            desc: 'Komitmen menciptakan ekosistem sekolah hijau, rindang, dan asri.', 
+            detailStory: 'Gerakan Indonesia ASRI adalah komitmen menyeluruh warga sekolah untuk menciptakan lingkungan belajar yang Aman dari bahaya, Sehat sanitasinya, Rindang oleh pepohonan rindang, dan Indah tertata rapi. Siswa menjadi agen pelindung bumi dengan membiasakan zero waste, mematikan listrik saat tidak terpakai, dan merawat tanaman peneduh, menciptakan mikroklimat kampus yang sangat sejuk dan nyaman.',
+            highlights: ['Kampus Hijau & Bebas Sampah Plastik', 'Zona Belajar Sejuk Terbuka', 'Adiwiyata Berkelanjutan'] 
+          },
+          { 
+            title: 'Program DT (Double Track)', 
+            src: 'doubletrack.jpg', 
+            badge: 'Vokasi & Wirausaha Mandiri', 
+            category: 'Unggulan Jatim', 
+            icon: 'fa-solid fa-briefcase', 
+            desc: 'Ijazah SMA plus sertifikat keterampilan kerja & kewirausahaan mandiri.', 
+            detailStory: 'Bekerja sama dengan Balai Latihan Kerja dan universitas pembina Jawa Timur, SMA Double Track membekali siswa dengan kompetensi vokasi terapan seperti Tata Boga, Desain Grafis. Siswa tidak hanya lulus memegang ijazah SMA untuk mendaftar kuliah, tetapi juga memiliki sertifikat kompetensi resmi serta keterampilan memulai wirausaha mandiri bernilai ekonomi tinggi.',
+            highlights: ['Ijazah SMA + Sertifikat Kompetensi Kerja', 'Pelatihan Praktek Terapan Berkualitas', 'Siap Kuliah Sekaligus Siap Wirausaha'] 
+          }
         ],
 
+        // PRESTASI SISWA
         achievements: [
           {
             title: 'Prestasi Akademik & Jurnalistik SMAN 1 Wongsorejo',
@@ -1575,8 +1668,9 @@
             src: 'prestasiakademik.jpg',
             badge: 'Akademik, Jurnalistik & PTN',
             category: 'Prestasi Akademik Siswa',
-            desc: 'Siswa-siswi SMAN 1 Wongsorejo terus mencetak prestasi akademik mulai dari kenaikan lulusan diterima di PTN (10 di 2024 → 25 di 2025 [+150%] → 28 di 2026), hingga Juara 1 Jurnalistik Tingkat Kabupaten.',
-            highlights: ['Tren Lolos PTN Naik Pesat: 2024 (10) → 2025 (25 / +150%) → 2026 (28)', 'Cintya Qonita — Juara 1 Jurnalistik Tingkat Kabupaten', 'Inovasi Kewirausahaan Double Track']
+            desc: 'Siswa-siswi SMAN 1 Wongsorejo terus mencetak rekor akademik dari kelulusan PTN hingga Juara 1 Jurnalistik Tingkat Kabupaten.',
+            detailStory: 'Komitmen sekolah dalam membimbing potensi intelektual siswa terbukti dari lonjakan drastis siswa yang berhasil menembus PTN ternama di Indonesia melalui jalur SNBP, UTBK-SNBT, dan Mandiri. Ditopang oleh bimbingan belajar tambahan dan klinik konsultasi jurusan sejak dini, siswa juga aktif dalam lomba penulisan esai, olimpiade sains, dan riset karya ilmiah, membuktikan bahwa siswa SMANJO mampu bersaing di level tertinggi.',
+            highlights: ['Tren Lolos PTN Naik Pesat: 2024 (10) → 2025 (25) → 2026 (28)', 'Cintya Qonita — Juara 1 Jurnalistik Tingkat Kabupaten', 'Inovasi Kewirausahaan Double Track Berprestasi']
           },
           {
             title: 'Prestasi Non-Akademik & Olahraga SMAN 1 Wongsorejo',
@@ -1584,11 +1678,12 @@
             src: 'prestasinonakademik.jpg',
             badge: 'Internasional, Kejurprov & POPDA',
             category: 'Prestasi Non-Akademik Siswa',
-            desc: 'Pembinaan ekstrakurikuler sukses mengantarkan siswa meraih Juara 1 & 2 International Karate Championship (Kemenpora), Juara 1 Pencak Silat Kabupaten, Kejurprov Jatim, hingga POPDA XV 2026!',
+            desc: 'Pembinaan ekstrakurikuler sukses mengantarkan siswa meraih medali emas Internasional Karate Kemenpora hingga Kejurprov Jatim.',
+            detailStory: 'Bidang non-akademik SMANJO adalah kawah candradimuka lahirnya atlet-atlet berbakat Banyuwangi. Didukung fasilitas lapangan voli standar turnamen dan bimbingan pelatih berlisensi, para siswa mampu mencatatkan prestasi fantastis hingga level internasional. Pembinaan disiplin fisik dan mental juara menjadi kunci siswa SMANJO langganan menaiki podium kehormatan berbagai kejuaraan olahraga dan seni bela diri.',
             highlights: [
-              'Cintya Qonita (Juara 1) & Amelia Putri Anggraini (Juara 2) — International Karate Championship (Kemenpora)',
+              'Cintya Qonita (Emas) & Amelia Putri (Perak) — Karate Internasional Kemenpora',
               'Andita Nafa Rezza Yana — Juara 1 Pencak Silat Tingkat Kabupaten',
-              'Moh. Wildan, Moh. Bayu, & Kenza (Voli Kejurprov) & Novita Herfina Putri (Juara 3 Voli Pantai POPDA XV 2026)'
+              'Skuad Voli Kejurprov Jatim & Novita Herfina Juara 3 POPDA XV 2026'
             ]
           }
         ],
@@ -1599,6 +1694,7 @@
           { year: '2026', count: 28, growthLabel: 'Naik +12% (Total +180%)', badgeClass: 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-xs', desc: 'Rekor tertinggi SMANJO', icon: 'fa-solid fa-trophy', iconBg: 'bg-amber-100 text-amber-600' }
         ],
 
+        // HALL OF FAME JUARA (DILENGKAPI NARASI DETAIL KEGIATAN)
         studentChampions: [
           {
             name: 'Cintya Qonita',
@@ -1612,7 +1708,8 @@
             category: 'Hall of Fame • Jurnalistik',
             ekskulTag: 'Jurnalistik & WIS TV',
             desc: 'Membuktikan ketajaman pena dan karya jurnalistik terbaik hingga meraih podium tertinggi Juara 1 Jurnalistik Tingkat Kabupaten.',
-            highlights: ['Juara 1 Lomba Jurnalistik Kabupaten', 'Karya tulis unggulan SMAN 1 Wongsorejo']
+            detailStory: 'Melalui gemblengan ekstrakurikuler WIS TV dan jurnalistik sekolah, Cintya Qonita berhasil menumbangkan puluhan peserta dari berbagai sekolah favorit di Banyuwangi. Dengan mengangkat isu sosial humaniora lokal yang dikemas dengan riset mendalam, gaya penulisan lugas, dan sudut pandang kritis, karyanya dinobatkan sebagai artikel jurnalistik terbaik tingkat kabupaten.',
+            highlights: ['Juara 1 Lomba Jurnalistik Kabupaten', 'Karya Tulis Menginspirasi Pelajar Banyuwangi']
           },
           {
             name: 'Cintya Qonita & Amelia Putri Anggraini',
@@ -1625,8 +1722,9 @@
             badgeColor: 'bg-gradient-to-r from-amber-500 to-yellow-500 text-white',
             category: 'Hall of Fame • Karate Internasional',
             ekskulTag: 'Ekskul Bela Diri (Karate)',
-            desc: 'Prestasi membanggakan di kancah internasional! Cintya Qonita meraih Medali Emas (Juara 1) dan Amelia Putri Anggraini meraih Medali Perak (Juara 2) Piala Kemenpora RI.',
-            highlights: ['Cintya Qonita — Juara 1 Internasional (Kemenpora)', 'Amelia Putri Anggraini — Juara 2 Internasional (Kemenpora)', 'Mengharumkan nama Banyuwangi']
+            desc: 'Prestasi membanggakan di kancah internasional! Cintya Qonita meraih Medali Emas dan Amelia Putri Anggraini meraih Medali Perak.',
+            detailStory: 'Dua srikandi tangguh kebanggaan SMANJO tampil memukau di ajang Kejuaraan Karate Internasional Piala Kemenpora RI yang diikuti ratusan karateka dari berbagai negara. Dengan teknik kumite yang presisi, kecepatan reflek prima, dan mental bertarung pantang menyerah, keduanya sukses melaju ke babak final dan mengibarkan bendera kebanggaan sekolah di podium internasional.',
+            highlights: ['Cintya Qonita — Medali Emas Internasional', 'Amelia Putri Anggraini — Medali Perak Internasional', 'Mengharumkan Nama Banyuwangi di Level Dunia']
           },
           {
             name: 'Moh. Wildan, Moh. Bayu, & Kenza',
@@ -1640,7 +1738,8 @@
             category: 'Hall of Fame • Bola Voli',
             ekskulTag: 'Ekskul Bola Voli',
             desc: 'Tiga atlet bola voli kebanggaan SMAN 1 Wongsorejo yang terpilih berlaga di ajang Kejuaraan Provinsi (Kejurprov) Jawa Timur.',
-            highlights: ['3 Atlet Terpilih di Kejurprov Jatim', 'Lahir dari Ekskul Bola Voli SMANJO']
+            detailStory: 'Ekskul bola voli SMANJO merupakan salah satu kekuatan voli pelajar terkuat di Jawa Timur bagian timur. Tiga atlet andalan sekolah ini berhasil lolos seleksi ketat tingkat kabupaten dan terpilih memperkuat tim utama Banyuwangi untuk berlaga di ajang bergengsi Kejuaraan Bola Voli Tingkat Provinsi (Kejurprov) Jawa Timur melawan kabupaten/kota terbaik lainnya.',
+            highlights: ['Lolos Seleksi Ketat Atlet Kabupaten', 'Skuad Inti Kejurprov Jatim', 'Lahir dari Pembinaan Lapangan SMANJO']
           },
           {
             name: 'Andita Nafa Rezza Yana',
@@ -1654,7 +1753,8 @@
             category: 'Hall of Fame • Pencak Silat',
             ekskulTag: 'Ekskul Bela Diri',
             desc: 'Tampil tangguh dan penuh ketangkasan hingga sukses menyabet Juara 1 Pencak Silat Tingkat Kabupaten.',
-            highlights: ['Peraih Medali Emas / Juara 1 Silat Kabupaten', 'Pendekar tangguh kebanggaan SMANJO']
+            detailStory: 'Melestarikan seni bela diri warisan leluhur bangsa, Andita menunjukkan dominasi mutlak di gelanggang kejuaraan pencak silat tingkat kabupaten. Melalui kombinasi bantingan cepat, tendangan presisi, serta kedisiplinan jurus yang indah, ia sukses menyingkirkan lawan-lawannya dan berhak atas medali emas Juara 1.',
+            highlights: ['Medali Emas Pencak Silat Kabupaten', 'Pendekar Tangguh Pelestari Seni Tradisi']
           },
           {
             name: 'Novita Herfina Putri',
@@ -1667,8 +1767,9 @@
             badgeColor: 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white',
             category: 'Hall of Fame • Voli Pantai',
             ekskulTag: 'Ekskul Bola Voli',
-            desc: 'Menunjukkan daya juang luar biasa di atas pasir hingga sukses meraih Juara 3 Voli Pantai Putri pada ajang POPDA XV Tahun 2026.',
-            highlights: ['Peraih Medali Juara 3 Voli Pantai POPDA XV 2026', 'Atlet putri tangguh SMANJO']
+            desc: 'Menunjukkan daya juang luar biasa di atas pasir hingga sukses meraih Juara 3 Voli Pantai Putri pada POPDA XV 2026.',
+            detailStory: 'Bermain di atas pasir pantai dengan tantangan angin kencang dan cuaca terik menuntut stamina dan fisik luar biasa. Novita Herfina Putri membuktikan ketangguhan fisik dan taktik bertanding ciamik, mengantarkan kontingen SMANJO merebut medali perunggu Juara 3 Voli Pantai pada ajang Pekan Olahraga Pelajar Daerah (POPDA) XV Jawa Timur Tahun 2026.',
+            highlights: ['Medali Perunggu POPDA XV 2026', 'Atlet Putri Pantang Menyerah']
           }
         ],
 
@@ -1679,18 +1780,118 @@
           { id: 'kepemimpinan', label: 'Kepemimpinan & Sains', icon: 'fa-solid fa-shield-halved' }
         ],
 
+        // 11 EKSTRAKURIKULER (DILENGKAPI NARASI DETAIL KEGIATAN)
         extracurriculars: [
-          { title: 'Pramuka', src: 'pramuka.jpg', category: 'kepemimpinan', categoryLabel: 'Kepemimpinan', icon: 'fa-solid fa-campground', desc: 'Membangun kemandirian, ketangkasan, dan jiwa kepemimpinan.', highlights: ['Kemah Bakti', 'Survival'] },
-          { title: 'Tari', src: 'tari.jpg', category: 'seni', categoryLabel: 'Seni & Budaya', icon: 'fa-solid fa-masks-theater', desc: 'Melestarikan tari tradisional Banyuwangi dan kreasi modern.', highlights: ['Event Sekolah', 'Budaya Daerah'] },
-          { title: 'Bola Voli', src: 'bolavoli.jpg', category: 'olahraga', categoryLabel: 'Olahraga Prestasi', icon: 'fa-solid fa-volleyball', desc: 'Latihan teknik smash, block, dan rutin di turnamen pelajar.', highlights: ['Tim Putra & Putri', 'Turnamen Kabupaten'] },
-          { title: 'PMR', src: 'pmr.jpg', category: 'kepemimpinan', categoryLabel: 'Kesehatan & Sosial', icon: 'fa-solid fa-kit-medical', desc: 'Keterampilan pertolongan pertama dan aksi kemanusiaan.', highlights: ['Pertolongan Pertama', 'Tim Medis Sekolah'] },
-          { title: 'Sepak Bola dan Futsal', src: 'sepakbolafutsal.jpg', category: 'olahraga', categoryLabel: 'Olahraga Prestasi', icon: 'fa-solid fa-futbol', desc: 'Mengasah taktik lapangan hijau dan futsal bersama tim SMANJO.', highlights: ['Liga Pelajar', 'Futsal Antar-SMA'] },
-          { title: 'Bela Diri', src: 'beladiri.jpg', category: 'olahraga', categoryLabel: 'Olahraga', icon: 'fa-solid fa-hand-fist', desc: 'Ketangguhan fisik, fokus mental, dan disiplin bela diri.', highlights: ['Kejuaraan Daerah', 'Pertahanan Diri'] },
-          { title: 'Seni Musik', src: 'senimusik.jpg', category: 'seni', categoryLabel: 'Seni Musik', icon: 'fa-solid fa-guitar', desc: 'Grup band sekolah, akustik, paduan suara, dan aransemen lagu.', highlights: ['Pensi Sekolah', 'Festival Musik'] },
-          { title: 'WIS Tv', src: 'wistv.jpg', category: 'seni', categoryLabel: 'Broadcasting', icon: 'fa-solid fa-video', desc: 'Televisi sekolah: fotografi, sinematografi, podcast, dan berita.', highlights: ['Liputan Event', 'Film Pendek'] },
-          { title: 'PAPI', src: 'papi.jpg', category: 'kepemimpinan', categoryLabel: 'Kepemimpinan', icon: 'fa-solid fa-people-group', desc: 'Kaderisasi kepemimpinan, public speaking, dan advokasi remaja.', highlights: ['Public Speaking', 'Duta Pelajar'] },
-          { title: 'Paskibraka', src: 'paskibraka.jpg', category: 'kepemimpinan', categoryLabel: 'Disiplin', icon: 'fa-solid fa-person-military-pointing', desc: 'Pasukan pengibar bendera dengan disiplin dan formasi baris berbaris.', highlights: ['Upacara Bendera', 'LKBB'] },
-          { title: 'KIR', src: 'kir.jpg', category: 'kepemimpinan', categoryLabel: 'Sains & Riset', icon: 'fa-solid fa-flask-vial', desc: 'Peneliti muda yang bereksperimen dan mengikuti lomba karya tulis.', highlights: ['LKTI', 'Sains Inovatif'] }
+          { 
+            title: 'Pramuka (Gudep SMANJO)', 
+            src: 'pramuka.jpg', 
+            category: 'kepemimpinan', 
+            categoryLabel: 'Kepemimpinan', 
+            icon: 'fa-solid fa-campground', 
+            desc: 'Membangun kemandirian, ketangkasan, dan jiwa kepemimpinan generasi muda.', 
+            detailStory: 'Ekskul Pramuka SMANJO adalah wadah pelatihan karakter tangguh, survival alam terbuka, dan kepanduan tingkat penegak. Siswa diajarkan teknik pionering, morse, navigasi darat, kemah bakti masyarakat, serta kepemimpinan regu. Pramuka melatih remaja agar siap menghadapi tantangan zaman dengan sikap mandiri, peduli sesama, dan setia kawan.',
+            highlights: ['Kemah Pelantikan & Bakti Sosial', 'Pionering & Keterampilan Survival', 'Kader Pemimpin Disiplin'] 
+          },
+          { 
+            title: 'Seni Tari Tradisional & Kreasi', 
+            src: 'tari.jpg', 
+            category: 'seni', 
+            categoryLabel: 'Seni & Budaya', 
+            icon: 'fa-solid fa-masks-theater', 
+            desc: 'Melestarikan tari tradisional Banyuwangi (Gandrung) dan kreasi tari kontemporer.', 
+            detailStory: 'Banyuwangi adalah bumi seni tari yang kaya. Ekskul tari SMANJO menjadi panggung bagi siswa untuk menguasai gerak indah Tari Gandrung, Tari Jejer, serta koreografi modern kreasi baru. Sanggar tari sekolah rutin tampil di panggung pembukaan tamu kehormatan, festival budaya daerah, hingga pentas seni sekolah dengan kostum megah nan anggun.',
+            highlights: ['Pelestarian Seni Tari Gandrung', 'Koreografi Kreasi Baru Kontemporer', 'Rutin Tampil di Event Daerah'] 
+          },
+          { 
+            title: 'Bola Voli (Putra & Putri)', 
+            src: 'bolavoli.jpg', 
+            category: 'olahraga', 
+            categoryLabel: 'Olahraga Prestasi', 
+            icon: 'fa-solid fa-volleyball', 
+            desc: 'Latihan teknik smash, passing, block, dan rutin bertanding di turnamen pelajar bergengsi.', 
+            detailStory: 'Menjadi salah satu ikon kebanggaan terbesar SMAN 1 Wongsorejo. Didukung oleh pelatih berlisensi dan fasilitas lapangan voli representatif, siswa digembleng fisik, teknik servis keras, spike tajam, dan strategi rotasi permainan. Ekskul ini telah melahirkan atlet skuad Kejurprov Jatim dan POPDA XV, serta sering menggelar turnamen SMANJO Cup.',
+            highlights: ['Pembinaan Tim Putra & Putri', 'Langganan Juara Turnamen Pelajar', 'Peluang Beasiswa Jalur Prestasi'] 
+          },
+          { 
+            title: 'PMR (Palang Merah Remaja)', 
+            src: 'pmr.jpg', 
+            category: 'kepemimpinan', 
+            categoryLabel: 'Kesehatan & Sosial', 
+            icon: 'fa-solid fa-kit-medical', 
+            desc: 'Keterampilan pertolongan pertama, aksi kemanusiaan, dan tanggap darurat medis.', 
+            detailStory: 'PMR Wira SMANJO mendidik siswa agar sigap dalam pertolongan pertama pada kecelakaan (PPGD), perawatan keluarga, donor darah, dan kesiapsiagaan bencana. Anggota PMR menjadi garda depan tim medis pada setiap upacara, turnamen olahraga, dan kegiatan besar sekolah, menumbuhkan jiwa kerelawanan dan empati kemanusiaan tinggi.',
+            highlights: ['Sertifikasi Pertolongan Pertama (PPGD)', 'Tim Medis Resmi Event Sekolah', 'Aksi Kemanusiaan & Bakti Sosial'] 
+          },
+          { 
+            title: 'Sepak Bola & Futsal', 
+            src: 'sepakbolafutsal.jpg', 
+            category: 'olahraga', 
+            categoryLabel: 'Olahraga Prestasi', 
+            icon: 'fa-solid fa-futbol', 
+            desc: 'Mengasah taktik lapangan hijau, kerjasama tim solid, dan kompetisi liga pelajar.', 
+            detailStory: 'Ekskul yang selalu ramai dipenuhi siswa pecinta si kulit bundar. Latihan mencakup penguasaan bola, operan taktis tiki-taka, transisi bertahan-menyerang, dan ketahanan fisik. Tim futsal dan sepak bola SMANJO rutin mengikuti liga pelajar antar-SMA se-Kabupaten Banyuwangi, menanamkan jiwa sportivitas tinggi dan persahabatan erat.',
+            highlights: ['Latihan Lapangan Hijau & Futsal', 'Liga Pelajar Antar-SMA Banyuwangi', 'Solidaritas & Taktik Pertandingan'] 
+          },
+          { 
+            title: 'Seni Bela Diri (Silat & Karate)', 
+            src: 'beladiri.jpg', 
+            category: 'olahraga', 
+            categoryLabel: 'Olahraga', 
+            icon: 'fa-solid fa-hand-fist', 
+            desc: 'Ketangguhan fisik, fokus mental juara, dan teknik pertahanan diri disiplin.', 
+            detailStory: 'Mewadahi cabang Pencak Silat dan Karate, ekskul bela diri SMANJO menekankan bahwa ilmu bela diri bertujuan melindungi diri, melatih kerendahan hati, dan membentuk ketahanan mental prima. Terbukti dengan raihan Juara 1 Tingkat Internasional Kemenpora dan Juara Kabupaten, ekskul ini menjadi wadah terbaik melatih disiplin hidup baja.',
+            highlights: ['Pencak Silat & Karate Prestasi', 'Piala Juara Internasional Kemenpora', 'Pertahanan Diri & Disiplin Baja'] 
+          },
+          { 
+            title: 'Seni Musik & Band Sekolah', 
+            src: 'senimusik.jpg', 
+            category: 'seni', 
+            categoryLabel: 'Seni Musik', 
+            icon: 'fa-solid fa-guitar', 
+            desc: 'Grup band sekolah, akustik, olah vokal paduan suara, dan aransemen lagu kreatif.', 
+            detailStory: 'Studio musik SMANJO terbuka bagi siswa yang memiliki talenta bermusik gitar, drum, keyboard, bass, maupun vokal. Siswa dilatih harmonisasi nada, aransemen lagu pop/rock/etnik, serta olah vokal paduan suara sekolah. Grup band SMANJO selalu menjadi bintang panggung yang memeriahkan peringatan hari besar dan pensi sekolah.',
+            highlights: ['Studio Musik & Alat Lengkap', 'Pengembangan Band & Akustik Pelajar', 'Pengisi Utama Pentas Seni Sekolah'] 
+          },
+          { 
+            title: 'WIS TV (Broadcasting & Multimedia)', 
+            src: 'wistv.jpg', 
+            category: 'seni', 
+            categoryLabel: 'Broadcasting', 
+            icon: 'fa-solid fa-video', 
+            desc: 'Televisi sekolah: fotografi, sinematografi, podcast, editing video, dan jurnalisme.', 
+            detailStory: 'Ekskul modern yang sangat diminati generasi digital! Siswa belajar langsung teknik pengoperasian kamera sinema, fotografi jurnalistik, teknik wawancara podcast, penulisan naskah berita, hingga editing video kreatif. WIS TV memproduksi liputan berita sekolah, konten media sosial resmi, dan film pendek yang sering meraih juara lomba konten kreatif.',
+            highlights: ['Liputan Event & Podcast Sekolah', 'Editing Video & Sinematografi Digital', 'Kawah Lahirnya Juara Jurnalistik'] 
+          },
+          { 
+            title: 'PAPI (Putra Putri SMANJO)', 
+            src: 'papi.jpg', 
+            category: 'kepemimpinan', 
+            categoryLabel: 'Kepemimpinan', 
+            icon: 'fa-solid fa-people-group', 
+            desc: 'Kaderisasi kepemimpinan, public speaking, duta sekolah, dan advokasi remaja.', 
+            detailStory: 'PAPI adalah wadah bagi siswa-siswi yang ingin mengasah kemampuan berbicara di depan umum (public speaking), etika kepribadian, serta advokasi isu positif remaja seperti anti-bullying dan literasi. Anggota PAPI sering menjadi perwakilan Duta Sekolah dalam forum pelajar kabupaten serta memandu acara-acara protokoler resmi.',
+            highlights: ['Pelatihan Public Speaking & MC', 'Duta Promosi & Protokoler Sekolah', 'Advokasi Positif Generasi Muda'] 
+          },
+          { 
+            title: 'Paskibraka (Pasukan Pengibar Bendera)', 
+            src: 'paskibraka.jpg', 
+            category: 'kepemimpinan', 
+            categoryLabel: 'Disiplin', 
+            icon: 'fa-solid fa-person-military-pointing', 
+            desc: 'Pasukan pengibar bendera dengan disiplin tinggi, formasi PBB, dan ketahanan fisik prima.', 
+            detailStory: 'Dikenal dengan baris-berbaris yang tegap, seragam gagah, dan formasi yang memukau. Paskibraka SMANJO mendidik anggota dengan kedisiplinan militer halus, ketahanan fisik, dan kekompakan kelompok tanpa celah. Anggotanya menjadi petugas pengibar bendera HUT RI tingkat kecamatan hingga kabupaten.',
+            highlights: ['Formasi Baris Berbaris (LKBB)', 'Kader Paskibraka Tingkat Kabupaten', 'Disiplin, Sikap Tegap & Patriotik'] 
+          },
+          { 
+            title: 'KIR (Karya Ilmiah Remaja)', 
+            src: 'kir.jpg', 
+            category: 'kepemimpinan', 
+            categoryLabel: 'Sains & Riset', 
+            icon: 'fa-solid fa-flask-vial', 
+            desc: 'Peneliti muda yang bereksperimen ilmiah, riset terapan, dan lomba karya tulis ilmiah.', 
+            detailStory: 'Rumah bagi siswa yang kritis, menyukai sains, dan gemar bereksperimen. Dibimbing oleh guru laboratorium, siswa belajar metode riset ilmiah, observasi lapangan tentang lingkungan hidup lokal Wongsorejo, uji coba biologi/kimia sederhana, hingga penyusunan naskah lomba LKTI. KIR melatih kemampuan bernalar kritis dan solusi inovatif pemecahan masalah.',
+            highlights: ['Riset Ilmiah & Eksperimen Laboratorium', 'Bimbingan Lomba Karya Tulis (LKTI)', 'Pengembangan Nalar Kritis Siswa'] 
+          }
         ],
 
         get filteredPPK() {
@@ -1752,7 +1953,6 @@
             const el = document.getElementById(this.sections[idx].id);
             if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-            // Otomatisasi musik saat masuk atau keluar dari slide kredit penutup
             if (idx === 5) {
               audioEngine.start();
               this.isMusicPlaying = true;
